@@ -31,7 +31,7 @@ export default function PlaylistItem({ track }: PlaylistItemProps) {
     <>
       <div
         onClick={handleCopy}
-        className="flex cursor-pointer gap-3 rounded-lg p-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50 lg:gap-4 lg:px-5 lg:py-4"
+        className="flex cursor-pointer gap-3 rounded-lg px-3 py-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50 lg:gap-4 lg:px-5 lg:py-5"
         role="button"
         tabIndex={0}
         onKeyDown={e => {
@@ -43,7 +43,7 @@ export default function PlaylistItem({ track }: PlaylistItemProps) {
       >
         <PlaylistImage imageUrl={track.imageUrl} title={track.title} />
 
-        <div className="flex min-w-0 flex-1 flex-col justify-center gap-1">
+        <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5">
           <div className="flex items-baseline gap-2">
             <span className="shrink-0 text-xs text-gray-400 dark:text-gray-500 lg:text-sm lg:font-medium">{time}</span>
             <span className="truncate text-sm font-semibold text-gray-900 dark:text-gray-100 lg:text-base">{track.title}</span>
