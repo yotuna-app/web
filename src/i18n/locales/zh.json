@@ -1,0 +1,131 @@
+{
+  "common": {
+    "loading": "加载中...",
+    "error": "数据加载错误",
+    "refresh": "刷新",
+    "search": "搜索...",
+    "noResults": "未找到结果",
+    "noResultsForSearchQuery": "尝试更改搜索查询",
+    "copiedToClipboard": "已复制到剪贴板",
+    "appName": "Yotuna"
+  },
+  "gdpr": {
+    "title": "隐私设置",
+    "prompt": "使用分析来改进应用程序",
+    "message": "我们重视您的隐私。我们希望使用分析来改进您的体验。这有助于我们了解您如何使用我们的应用程序并使其更好。您可以随时在应用程序设置中更改此设置。",
+    "accept": "接受",
+    "decline": "拒绝",
+    "privacyPolicyLink": "隐私政策"
+  },
+  "errors": {
+    "noConnection": "无网络连接",
+    "noConnectionMessage": "请检查您的网络连接并重试。",
+    "serviceUnavailable": "服务暂时不可用",
+    "serviceUnavailableMessage": "我们遇到技术困难。请稍后重试。",
+    "retry": "重试",
+    "genericError": "发生错误。请重试。",
+    "audioPlaybackFailed": "无法播放音频。请检查您的连接并重试。"
+  },
+  "nav": {
+    "home": "广播电台",
+    "settings": "设置",
+    "about": "关于",
+    "privacy": "隐私"
+  },
+  "home": {
+    "title": "广播电台",
+    "errorLoadingStations": "加载电台时出错",
+    "favorites": "收藏夹",
+    "allStations": "所有电台"
+  },
+  "station": {
+    "noPlaylist": "没有可用的播放列表",
+    "playlistNotAvailable": "此电台没有可用的播放列表",
+    "playlist": "电台播放列表",
+    "errorLoadingPlaylist": "加载播放列表数据时出错",
+    "openInDeezer": "Deezer",
+    "openInTidal": "Tidal",
+    "openInSpotify": "Spotify",
+    "openInAppleMusic": "Apple Music",
+    "trackNotFound": "未找到曲目",
+    "today": "今天",
+    "yesterday": "昨天",
+    "noPlaylistData": "当天没有可用的播放列表数据",
+    "previous": "上一个",
+    "next": "下一个",
+    "copyTrack": "复制曲目信息",
+    "backToStations": "返回电台"
+  },
+  "settings": {
+    "title": "设置",
+    "appearance": "外观",
+    "language": "语言",
+    "system": "系统",
+    "light": "浅色",
+    "dark": "深色",
+    "selectLanguage": "选择语言",
+    "gdprConsent": "隐私设置",
+    "resetGdpr": "重置隐私设置"
+  },
+  "about": {
+    "title": "关于 Yotuna",
+    "description": "探索世界各地的广播电台，跟踪实时播放列表，在您喜爱的流媒体服务上查找歌曲。",
+    "version": "版本",
+    "features": "功能",
+    "feature1": "浏览世界各地数千个广播电台",
+    "feature2": "直接在浏览器中进行音频实时播放",
+    "feature3": "实时跟踪每个电台正在播放的内容",
+    "feature4": "直接在 Spotify、Deezer、Tidal 或 Apple Music 中打开歌曲",
+    "feature5": "保存收藏电台以快速访问",
+    "feature6": "深色模式和9种语言支持",
+    "feature7": "基于浏览器区域设置的日期和时间格式",
+    "feature8": "一键复制曲目信息到剪贴板",
+    "feature9": "可在 iOS、Android 和网页上使用",
+    "technology": "技术",
+    "community": "社区",
+    "discordTitle": "加入我们的 Discord",
+    "discordDescription": "与其他粉丝聊天，报告错误并提出新功能建议。",
+    "joinDiscord": "加入 Discord",
+    "deviceInfo": "设备信息",
+    "deviceId": "设备 ID",
+    "mobileApps": "移动应用",
+    "appStore": "App Store",
+    "playStore": "Google Play",
+    "website": "网站"
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "intro": "您的隐私对我们很重要。以下是 Yotuna 处理您数据的方式。",
+    "localData": "本地数据存储",
+    "localDataDescription": "您的偏好设置（主题、语言、收藏）使用 localStorage 存储在浏览器本地。这些数据永远不会离开您的设备。",
+    "analytics": "分析",
+    "analyticsDescription": "经您同意后，我们可能会收集匿名使用数据以改善应用体验。可以随时在设置页面禁用分析。",
+    "cookies": "Cookie",
+    "cookiesDescription": "Yotuna 使用 localStorage 来保存设置。我们不使用跟踪 Cookie。",
+    "streaming": "流媒体服务",
+    "streamingDescription": "点击流媒体服务按钮时，您将被重定向到外部网站（Spotify、Deezer、Tidal、Apple Music），它们有自己的隐私政策。",
+    "audioStreaming": "音频流",
+    "audioStreamingDescription": "广播电台流直接从电台服务器获取。Yotuna 不处理、记录或存储任何音频数据。",
+    "contact": "联系我们",
+    "contactDescription": "如有隐私相关问题，请通过 Discord 联系我们或访问 yotuna.com。"
+  },
+  "favorites": {
+    "limitReached": "您已达到 {{limit}} 个收藏电台的限制。"
+  },
+  "language": {
+    "en": "English",
+    "pl": "Polski",
+    "ar": "العربية",
+    "zh": "中文",
+    "es": "Español",
+    "hi": "हिन्दी",
+    "ja": "日本語",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "message": "您要找的页面不存在。",
+    "goHome": "返回首页"
+  }
+}

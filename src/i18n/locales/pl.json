@@ -1,0 +1,131 @@
+{
+  "common": {
+    "loading": "Ładowanie...",
+    "error": "Błąd ładowania danych",
+    "refresh": "Odśwież",
+    "search": "Szukaj...",
+    "noResults": "Nie znaleziono wyników",
+    "noResultsForSearchQuery": "Spróbuj zmienić zapytanie wyszukiwania",
+    "copiedToClipboard": "Skopiowano do schowka",
+    "appName": "Yotuna"
+  },
+  "gdpr": {
+    "title": "Ustawienia prywatności",
+    "prompt": "Zezwól na analitykę, aby ulepszyć aplikację",
+    "message": "Cenimy Twoją prywatność. Chcielibyśmy używać analityki, aby poprawić Twoje doświadczenie. To pomaga nam zrozumieć, jak korzystasz z naszej aplikacji i ją ulepszać. Możesz zmienić to ustawienie w dowolnym momencie w ustawieniach aplikacji.",
+    "accept": "Zaakceptuj",
+    "decline": "Odrzuć",
+    "privacyPolicyLink": "Polityka prywatności"
+  },
+  "errors": {
+    "noConnection": "Brak połączenia z internetem",
+    "noConnectionMessage": "Sprawdź połączenie internetowe i spróbuj ponownie.",
+    "serviceUnavailable": "Usługa tymczasowo niedostępna",
+    "serviceUnavailableMessage": "Przepraszamy, wystąpiły problemy techniczne. Spróbuj ponownie za chwilę.",
+    "retry": "Spróbuj ponownie",
+    "genericError": "Wystąpił błąd. Spróbuj ponownie.",
+    "audioPlaybackFailed": "Nie udało się odtworzyć audio. Sprawdź połączenie internetowe i spróbuj ponownie."
+  },
+  "nav": {
+    "home": "Radiostacje",
+    "settings": "Ustawienia",
+    "about": "O aplikacji",
+    "privacy": "Prywatność"
+  },
+  "home": {
+    "title": "Stacje Radiowe",
+    "errorLoadingStations": "Błąd ładowania stacji",
+    "favorites": "Ulubione",
+    "allStations": "Wszystkie stacje"
+  },
+  "station": {
+    "noPlaylist": "Brak dostępnej playlisty",
+    "playlistNotAvailable": "Ta stacja nie ma dostępnej playlisty",
+    "playlist": "Playlista stacji",
+    "errorLoadingPlaylist": "Błąd ładowania danych playlisty",
+    "openInDeezer": "Deezer",
+    "openInTidal": "Tidal",
+    "openInSpotify": "Spotify",
+    "openInAppleMusic": "Apple Music",
+    "trackNotFound": "Utwór nie został znaleziony",
+    "today": "Dziś",
+    "yesterday": "Wczoraj",
+    "noPlaylistData": "Brak danych playlisty dla tego dnia",
+    "previous": "Poprzedni",
+    "next": "Następny",
+    "copyTrack": "Kopiuj informacje o utworze",
+    "backToStations": "Powrót do stacji"
+  },
+  "settings": {
+    "title": "Ustawienia",
+    "appearance": "Wygląd",
+    "language": "Język",
+    "system": "System",
+    "light": "Jasny",
+    "dark": "Ciemny",
+    "selectLanguage": "Wybierz język",
+    "gdprConsent": "Zgoda na prywatność",
+    "resetGdpr": "Resetuj ustawienia prywatności"
+  },
+  "about": {
+    "title": "O Yotuna",
+    "description": "Odkrywaj stacje radiowe z całego świata, śledź playlisty na żywo i znajdź piosenki na swoich ulubionych serwisach streamingowych.",
+    "version": "Wersja",
+    "features": "Funkcje",
+    "feature1": "Przeglądaj tysiące stacji radiowych z całego świata",
+    "feature2": "Streaming audio na żywo bezpośrednio w przeglądarce",
+    "feature3": "Śledź co gra na każdej stacji w czasie rzeczywistym",
+    "feature4": "Otwieraj piosenki bezpośrednio w Spotify, Deezer, Tidal lub Apple Music",
+    "feature5": "Zapisuj ulubione stacje do szybkiego dostępu",
+    "feature6": "Tryb ciemny i wsparcie 9 języków",
+    "feature7": "Formatowanie daty i czasu zgodne z ustawieniami regionalnymi przeglądarki",
+    "feature8": "Kopiuj info o utworze do schowka jednym kliknięciem",
+    "feature9": "Dostępne na iOS, Android i Web",
+    "technology": "Technologia",
+    "community": "Społeczność",
+    "discordTitle": "Dołącz do nas na Discordzie",
+    "discordDescription": "Rozmawiaj z innymi fanami, zgłaszaj błędy i proponuj nowe funkcje.",
+    "joinDiscord": "Dołącz na Discord",
+    "deviceInfo": "Informacje o urządzeniu",
+    "deviceId": "ID urządzenia",
+    "mobileApps": "Aplikacje mobilne",
+    "appStore": "App Store",
+    "playStore": "Google Play",
+    "website": "Strona internetowa"
+  },
+  "privacy": {
+    "title": "Polityka prywatności",
+    "intro": "Twoja prywatność jest dla nas ważna. Oto jak Yotuna obsługuje Twoje dane.",
+    "localData": "Lokalne przechowywanie danych",
+    "localDataDescription": "Twoje preferencje (motyw, język, ulubione) są przechowywane lokalnie w przeglądarce za pomocą localStorage. Te dane nigdy nie opuszczają Twojego urządzenia.",
+    "analytics": "Analityka",
+    "analyticsDescription": "Za Twoją zgodą możemy zbierać anonimowe dane użytkowania w celu ulepszenia aplikacji. Analitykę można wyłączyć w dowolnym momencie w Ustawieniach.",
+    "cookies": "Pliki cookie",
+    "cookiesDescription": "Yotuna używa localStorage do zapisywania ustawień. Nie stosujemy śledzących plików cookie.",
+    "streaming": "Serwisy streamingowe",
+    "streamingDescription": "Kliknięcie przycisków serwisów streamingowych przekierowuje na zewnętrzne strony (Spotify, Deezer, Tidal, Apple Music), które mają własne polityki prywatności.",
+    "audioStreaming": "Streaming audio",
+    "audioStreamingDescription": "Strumienie radiowe są pobierane bezpośrednio z serwerów stacji. Yotuna nie przetwarza, nie nagrywa ani nie przechowuje danych audio.",
+    "contact": "Kontakt",
+    "contactDescription": "W sprawie prywatności skontaktuj się z nami przez Discord lub odwiedź yotuna.com."
+  },
+  "favorites": {
+    "limitReached": "Osiągnąłeś limit {{limit}} ulubionych stacji."
+  },
+  "language": {
+    "en": "English",
+    "pl": "Polski",
+    "ar": "العربية",
+    "zh": "中文",
+    "es": "Español",
+    "hi": "हिन्दी",
+    "ja": "日本語",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "notFound": {
+    "title": "Nie znaleziono strony",
+    "message": "Strona, której szukasz, nie istnieje.",
+    "goHome": "Przejdź do strony głównej"
+  }
+}

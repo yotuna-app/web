@@ -1,0 +1,131 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error al cargar datos",
+    "refresh": "Actualizar",
+    "search": "Buscar...",
+    "noResults": "No se encontraron resultados",
+    "noResultsForSearchQuery": "Intenta cambiar tu consulta de búsqueda",
+    "copiedToClipboard": "Copiado al portapapeles",
+    "appName": "Yotuna"
+  },
+  "gdpr": {
+    "title": "Configuración de privacidad",
+    "prompt": "Usar análisis para mejorar la aplicación",
+    "message": "Valoramos tu privacidad. Nos gustaría usar análisis para mejorar tu experiencia. Esto nos ayuda a entender cómo usas nuestra aplicación y mejorarla. Puedes cambiar esta configuración en cualquier momento en la configuración de la aplicación.",
+    "accept": "Aceptar",
+    "decline": "Rechazar",
+    "privacyPolicyLink": "Política de privacidad"
+  },
+  "errors": {
+    "noConnection": "Sin conexión a Internet",
+    "noConnectionMessage": "Por favor, verifica tu conexión a Internet e intenta nuevamente.",
+    "serviceUnavailable": "Servicio temporalmente no disponible",
+    "serviceUnavailableMessage": "Estamos experimentando dificultades técnicas. Por favor, intenta nuevamente en unos momentos.",
+    "retry": "Intentar nuevamente",
+    "genericError": "Ocurrió un error. Intenta de nuevo.",
+    "audioPlaybackFailed": "No se pudo reproducir el audio. Verifica tu conexión e intenta de nuevo."
+  },
+  "nav": {
+    "home": "Estaciones de radio",
+    "settings": "Configuración",
+    "about": "Acerca de",
+    "privacy": "Privacidad"
+  },
+  "home": {
+    "title": "Estaciones de radio",
+    "errorLoadingStations": "Error al cargar las estaciones",
+    "favorites": "Favoritos",
+    "allStations": "Todas las estaciones"
+  },
+  "station": {
+    "noPlaylist": "No hay lista de reproducción disponible",
+    "playlistNotAvailable": "Esta estación no tiene una lista de reproducción disponible",
+    "playlist": "Lista de reproducción de la estación",
+    "errorLoadingPlaylist": "Error al cargar los datos de la lista de reproducción",
+    "openInDeezer": "Deezer",
+    "openInTidal": "Tidal",
+    "openInSpotify": "Spotify",
+    "openInAppleMusic": "Apple Music",
+    "trackNotFound": "Pista no encontrada",
+    "today": "Hoy",
+    "yesterday": "Ayer",
+    "noPlaylistData": "No hay datos de lista de reproducción disponibles para este día",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "copyTrack": "Copiar información de la pista",
+    "backToStations": "Volver a las estaciones"
+  },
+  "settings": {
+    "title": "Configuración",
+    "appearance": "Apariencia",
+    "language": "Idioma",
+    "system": "Sistema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "selectLanguage": "Seleccionar idioma",
+    "gdprConsent": "Configuración de privacidad",
+    "resetGdpr": "Restablecer configuración de privacidad"
+  },
+  "about": {
+    "title": "Acerca de Yotuna",
+    "description": "Descubre estaciones de radio de todo el mundo, sigue listas de reproducción en vivo y encuentra canciones en tus servicios de streaming favoritos.",
+    "version": "Versión",
+    "features": "Características",
+    "feature1": "Explora miles de estaciones de radio en todo el mundo",
+    "feature2": "Streaming de audio en vivo directamente en tu navegador",
+    "feature3": "Sigue lo que suena en cada estación en tiempo real",
+    "feature4": "Abre canciones directamente en Spotify, Deezer, Tidal o Apple Music",
+    "feature5": "Guarda tus estaciones favoritas para acceso rápido",
+    "feature6": "Modo oscuro y soporte para 9 idiomas",
+    "feature7": "Formato de fecha y hora según la configuración regional del navegador",
+    "feature8": "Copia la información de la pista al portapapeles con un clic",
+    "feature9": "Disponible en iOS, Android y Web",
+    "technology": "Tecnología",
+    "community": "Comunidad",
+    "discordTitle": "Únete a nosotros en Discord",
+    "discordDescription": "Habla con otros fans, informa errores y sugiere nuevas funciones.",
+    "joinDiscord": "Únete a Discord",
+    "deviceInfo": "Información del dispositivo",
+    "deviceId": "ID del dispositivo",
+    "mobileApps": "Aplicaciones móviles",
+    "appStore": "App Store",
+    "playStore": "Google Play",
+    "website": "Sitio web"
+  },
+  "privacy": {
+    "title": "Política de privacidad",
+    "intro": "Tu privacidad es importante para nosotros. Así es como Yotuna maneja tus datos.",
+    "localData": "Almacenamiento local de datos",
+    "localDataDescription": "Tus preferencias (tema, idioma, favoritos) se almacenan localmente en tu navegador usando localStorage. Estos datos nunca salen de tu dispositivo.",
+    "analytics": "Análisis",
+    "analyticsDescription": "Cuando das tu consentimiento, podemos recopilar datos de uso anónimos para mejorar la experiencia de la aplicación. Los análisis se pueden desactivar en cualquier momento desde la página de Configuración.",
+    "cookies": "Cookies",
+    "cookiesDescription": "Yotuna usa localStorage para guardar la configuración. No utilizamos cookies de seguimiento.",
+    "streaming": "Servicios de streaming",
+    "streamingDescription": "Al hacer clic en los botones de servicios de streaming, serás redirigido a sitios externos (Spotify, Deezer, Tidal, Apple Music) que tienen sus propias políticas de privacidad.",
+    "audioStreaming": "Streaming de audio",
+    "audioStreamingDescription": "Los flujos de las estaciones de radio se obtienen directamente de los servidores de las estaciones. Yotuna no procesa, graba ni almacena datos de audio.",
+    "contact": "Contacto",
+    "contactDescription": "Para preguntas sobre privacidad, contáctanos a través de Discord o visita yotuna.com."
+  },
+  "favorites": {
+    "limitReached": "Has alcanzado el límite de {{limit}} estaciones favoritas."
+  },
+  "language": {
+    "en": "English",
+    "pl": "Polski",
+    "ar": "العربية",
+    "zh": "中文",
+    "es": "Español",
+    "hi": "हिन्दी",
+    "ja": "日本語",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "message": "La página que buscas no existe.",
+    "goHome": "Ir a inicio"
+  }
+}

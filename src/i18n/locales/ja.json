@@ -1,0 +1,131 @@
+{
+  "common": {
+    "loading": "読み込み中...",
+    "error": "データの読み込みエラー",
+    "refresh": "更新",
+    "search": "検索...",
+    "noResults": "結果が見つかりません",
+    "noResultsForSearchQuery": "検索クエリを変更してみてください",
+    "copiedToClipboard": "クリップボードにコピーしました",
+    "appName": "Yotuna"
+  },
+  "gdpr": {
+    "title": "プライバシー設定",
+    "prompt": "アプリを改善するために分析を使用する",
+    "message": "私たちはあなたのプライバシーを大切にします。アプリの体験を向上させるために分析を使用したいと考えています。これにより、アプリの使用方法を理解し、改善することができます。この設定は、アプリの設定でいつでも変更できます。",
+    "accept": "承諾",
+    "decline": "拒否",
+    "privacyPolicyLink": "プライバシーポリシー"
+  },
+  "errors": {
+    "noConnection": "インターネット接続がありません",
+    "noConnectionMessage": "インターネット接続を確認して再試行してください。",
+    "serviceUnavailable": "サービスは一時的に利用できません",
+    "serviceUnavailableMessage": "技術的な問題が発生しています。しばらくしてから再試行してください。",
+    "retry": "再試行",
+    "genericError": "エラーが発生しました。もう一度お試しください。",
+    "audioPlaybackFailed": "オーディオを再生できません。接続を確認してもう一度お試しください。"
+  },
+  "nav": {
+    "home": "ラジオ局",
+    "settings": "設定",
+    "about": "詳細",
+    "privacy": "プライバシー"
+  },
+  "home": {
+    "title": "ラジオ局",
+    "errorLoadingStations": "局の読み込みエラー",
+    "favorites": "お気に入り",
+    "allStations": "すべての局"
+  },
+  "station": {
+    "noPlaylist": "利用可能なプレイリストがありません",
+    "playlistNotAvailable": "この局には利用可能なプレイリストがありません",
+    "playlist": "局のプレイリスト",
+    "errorLoadingPlaylist": "プレイリストデータの読み込みエラー",
+    "openInDeezer": "Deezer",
+    "openInTidal": "Tidal",
+    "openInSpotify": "Spotify",
+    "openInAppleMusic": "Apple Music",
+    "trackNotFound": "トラックが見つかりません",
+    "today": "今日",
+    "yesterday": "昨日",
+    "noPlaylistData": "この日のプレイリストデータはありません",
+    "previous": "前へ",
+    "next": "次へ",
+    "copyTrack": "トラック情報をコピー",
+    "backToStations": "局一覧に戻る"
+  },
+  "settings": {
+    "title": "設定",
+    "appearance": "外観",
+    "language": "言語",
+    "system": "システム",
+    "light": "ライト",
+    "dark": "ダーク",
+    "selectLanguage": "言語を選択",
+    "gdprConsent": "プライバシー設定",
+    "resetGdpr": "プライバシー設定をリセット"
+  },
+  "about": {
+    "title": "Yotuna について",
+    "description": "世界中のラジオ局を発見し、ライブプレイリストを追跡し、お気に入りのストリーミングサービスで曲を見つけましょう。",
+    "version": "バージョン",
+    "features": "機能",
+    "feature1": "世界中の何千ものラジオ局を閲覧",
+    "feature2": "ブラウザで直接ライブオーディオストリーミング",
+    "feature3": "各局で再生中の曲をリアルタイムで追跡",
+    "feature4": "曲を直接 Spotify、Deezer、Tidal、Apple Music で開く",
+    "feature5": "お気に入りの局を保存してすぐにアクセス",
+    "feature6": "ダークモードと9言語のサポート",
+    "feature7": "ブラウザのロケールに基づく日付と時刻のフォーマット",
+    "feature8": "ワンクリックでトラック情報をクリップボードにコピー",
+    "feature9": "iOS、Android、Webで利用可能",
+    "technology": "テクノロジー",
+    "community": "コミュニティ",
+    "discordTitle": "Discordで私たちに参加してください",
+    "discordDescription": "他のファンと話し、バグを報告し、新機能を提案してください。",
+    "joinDiscord": "Discordに参加",
+    "deviceInfo": "デバイス情報",
+    "deviceId": "デバイスID",
+    "mobileApps": "モバイルアプリ",
+    "appStore": "App Store",
+    "playStore": "Google Play",
+    "website": "ウェブサイト"
+  },
+  "privacy": {
+    "title": "プライバシーポリシー",
+    "intro": "あなたのプライバシーは私たちにとって重要です。Yotunaがあなたのデータをどのように扱うかをご紹介します。",
+    "localData": "ローカルデータストレージ",
+    "localDataDescription": "設定（テーマ、言語、お気に入り）はlocalStorageを使用してブラウザにローカルで保存されます。このデータはデバイスから出ることはありません。",
+    "analytics": "分析",
+    "analyticsDescription": "同意いただいた場合、アプリ体験を改善するために匿名の使用データを収集することがあります。分析はいつでも設定ページから無効にできます。",
+    "cookies": "Cookie",
+    "cookiesDescription": "Yotunaは設定の保存にlocalStorageを使用しています。トラッキングCookieは使用しません。",
+    "streaming": "ストリーミングサービス",
+    "streamingDescription": "ストリーミングサービスのボタンをクリックすると、外部ウェブサイト（Spotify、Deezer、Tidal、Apple Music）にリダイレクトされます。それぞれ独自のプライバシーポリシーがあります。",
+    "audioStreaming": "オーディオストリーミング",
+    "audioStreamingDescription": "ラジオ局のストリームは局のサーバーから直接取得されます。Yotunaはオーディオデータを処理、録音、保存しません。",
+    "contact": "お問い合わせ",
+    "contactDescription": "プライバシーに関するご質問は、Discordでお問い合わせいただくか、yotuna.comをご覧ください。"
+  },
+  "favorites": {
+    "limitReached": "お気に入り局の上限 {{limit}} に達しました。"
+  },
+  "language": {
+    "en": "English",
+    "pl": "Polski",
+    "ar": "العربية",
+    "zh": "中文",
+    "es": "Español",
+    "hi": "हिन्दी",
+    "ja": "日本語",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "message": "お探しのページは存在しません。",
+    "goHome": "ホームに戻る"
+  }
+}

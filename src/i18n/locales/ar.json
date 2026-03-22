@@ -1,0 +1,131 @@
+{
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "خطأ في تحميل البيانات",
+    "refresh": "تحديث",
+    "search": "بحث...",
+    "noResults": "لم يتم العثور على نتائج",
+    "noResultsForSearchQuery": "حاول تغيير استعلام البحث الخاص بك",
+    "copiedToClipboard": "تم النسخ إلى الحافظة",
+    "appName": "Yotuna"
+  },
+  "gdpr": {
+    "title": "إعدادات الخصوصية",
+    "prompt": "استخدام التحليلات لتحسين التطبيق",
+    "message": "نحن نقدر خصوصيتك. نود استخدام التحليلات لتحسين تجربتك. يساعدنا ذلك على فهم كيفية استخدامك لتطبيقنا وتحسينه. يمكنك تغيير هذا الإعداد في أي وقت في إعدادات التطبيق.",
+    "accept": "قبول",
+    "decline": "رفض",
+    "privacyPolicyLink": "سياسة الخصوصية"
+  },
+  "errors": {
+    "noConnection": "لا يوجد اتصال بالإنترنت",
+    "noConnectionMessage": "يرجى التحقق من اتصال الإنترنت والمحاولة مرة أخرى.",
+    "serviceUnavailable": "الخدمة غير متوفرة مؤقتاً",
+    "serviceUnavailableMessage": "نواجه صعوبات تقنية. يرجى المحاولة مرة أخرى بعد قليل.",
+    "retry": "إعادة المحاولة",
+    "genericError": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+    "audioPlaybackFailed": "فشل تشغيل الصوت. تحقق من اتصالك وحاول مرة أخرى."
+  },
+  "nav": {
+    "home": "محطات الراديو",
+    "settings": "الإعدادات",
+    "about": "حول",
+    "privacy": "الخصوصية"
+  },
+  "home": {
+    "title": "محطات الراديو",
+    "errorLoadingStations": "خطأ في تحميل المحطات",
+    "favorites": "المفضلة",
+    "allStations": "جميع المحطات"
+  },
+  "station": {
+    "noPlaylist": "لا توجد قائمة تشغيل متاحة",
+    "playlistNotAvailable": "هذه المحطة لا تحتوي على قائمة تشغيل متاحة",
+    "playlist": "قائمة تشغيل المحطة",
+    "errorLoadingPlaylist": "خطأ في تحميل بيانات قائمة التشغيل",
+    "openInDeezer": "Deezer",
+    "openInTidal": "Tidal",
+    "openInSpotify": "Spotify",
+    "openInAppleMusic": "Apple Music",
+    "trackNotFound": "لم يتم العثور على المسار",
+    "today": "اليوم",
+    "yesterday": "أمس",
+    "noPlaylistData": "لا توجد بيانات قائمة تشغيل متاحة لهذا اليوم",
+    "previous": "السابق",
+    "next": "التالي",
+    "copyTrack": "نسخ معلومات المسار",
+    "backToStations": "العودة إلى المحطات"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "appearance": "المظهر",
+    "language": "اللغة",
+    "system": "النظام",
+    "light": "فاتح",
+    "dark": "داكن",
+    "selectLanguage": "اختر اللغة",
+    "gdprConsent": "إعدادات الخصوصية",
+    "resetGdpr": "إعادة تعيين إعدادات الخصوصية"
+  },
+  "about": {
+    "title": "حول Yotuna",
+    "description": "اكتشف محطات الراديو حول العالم، وتتبع قوائم التشغيل المباشرة، وابحث عن الأغاني على خدمات البث المفضلة لديك.",
+    "version": "الإصدار",
+    "features": "الميزات",
+    "feature1": "تصفح آلاف محطات الراديو حول العالم",
+    "feature2": "بث صوتي مباشر في متصفحك",
+    "feature3": "تتبع ما يتم تشغيله على كل محطة في الوقت الفعلي",
+    "feature4": "افتح الأغاني مباشرة في Spotify أو Deezer أو Tidal أو Apple Music",
+    "feature5": "احفظ محطاتك المفضلة للوصول السريع",
+    "feature6": "الوضع الداكن ودعم 9 لغات",
+    "feature7": "تنسيق التاريخ والوقت وفقاً لإعدادات المتصفح المحلية",
+    "feature8": "انسخ معلومات المسار إلى الحافظة بنقرة واحدة",
+    "feature9": "متاح على iOS و Android والويب",
+    "technology": "التقنية",
+    "community": "المجتمع",
+    "discordTitle": "انضم إلينا على Discord",
+    "discordDescription": "تحدث مع المعجبين الآخرين، أبلغ عن الأخطاء واقترح ميزات جديدة.",
+    "joinDiscord": "انضم إلى Discord",
+    "deviceInfo": "معلومات الجهاز",
+    "deviceId": "معرف الجهاز",
+    "mobileApps": "تطبيقات الهاتف",
+    "appStore": "App Store",
+    "playStore": "Google Play",
+    "website": "الموقع الإلكتروني"
+  },
+  "privacy": {
+    "title": "سياسة الخصوصية",
+    "intro": "خصوصيتك مهمة بالنسبة لنا. إليك كيف يتعامل Yotuna مع بياناتك.",
+    "localData": "تخزين البيانات المحلية",
+    "localDataDescription": "يتم تخزين تفضيلاتك (المظهر، اللغة، المفضلات) محلياً في متصفحك باستخدام localStorage. هذه البيانات لا تغادر جهازك أبداً.",
+    "analytics": "التحليلات",
+    "analyticsDescription": "عندما توافق، قد نجمع بيانات استخدام مجهولة لتحسين تجربة التطبيق. يمكن تعطيل التحليلات في أي وقت من صفحة الإعدادات.",
+    "cookies": "ملفات تعريف الارتباط",
+    "cookiesDescription": "يستخدم Yotuna localStorage لحفظ الإعدادات. لا نستخدم ملفات تعريف ارتباط للتتبع.",
+    "streaming": "خدمات البث",
+    "streamingDescription": "عند النقر على أزرار خدمات البث، يتم توجيهك إلى مواقع خارجية (Spotify، Deezer، Tidal، Apple Music) لها سياسات خصوصية خاصة بها.",
+    "audioStreaming": "البث الصوتي",
+    "audioStreamingDescription": "يتم جلب بث المحطات الإذاعية مباشرة من خوادم المحطات. لا يقوم Yotuna بمعالجة أو تسجيل أو تخزين أي بيانات صوتية.",
+    "contact": "اتصل بنا",
+    "contactDescription": "لأسئلة الخصوصية، تواصل معنا عبر Discord أو قم بزيارة yotuna.com."
+  },
+  "favorites": {
+    "limitReached": "لقد وصلت إلى الحد الأقصى {{limit}} من المحطات المفضلة."
+  },
+  "language": {
+    "en": "English",
+    "pl": "Polski",
+    "ar": "العربية",
+    "zh": "中文",
+    "es": "Español",
+    "hi": "हिन्दी",
+    "ja": "日本語",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "message": "الصفحة التي تبحث عنها غير موجودة.",
+    "goHome": "اذهب إلى الصفحة الرئيسية"
+  }
+}
