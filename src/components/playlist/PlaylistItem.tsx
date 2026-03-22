@@ -9,9 +9,10 @@ import type { PlaylistTrack } from "@/types";
 
 interface PlaylistItemProps {
   track: PlaylistTrack;
+  isEven?: boolean;
 }
 
-export default function PlaylistItem({ track }: PlaylistItemProps) {
+export default function PlaylistItem({ track, isEven }: PlaylistItemProps) {
   const { t } = useTranslation();
   const { toast, showToast } = useToast();
   const time = formatPlaylistTime(track.startedAt);
@@ -31,7 +32,7 @@ export default function PlaylistItem({ track }: PlaylistItemProps) {
     <>
       <div
         onClick={handleCopy}
-        className="flex cursor-pointer gap-3 rounded-lg px-3 py-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50 lg:gap-4 lg:px-5 lg:py-5"
+        className={`flex cursor-pointer gap-3 rounded-lg px-3 py-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50 lg:gap-4 lg:px-5 lg:py-5 ${isEven ? "bg-gray-50/50 dark:bg-gray-800/20" : ""}`}
         role="button"
         tabIndex={0}
         onKeyDown={e => {
