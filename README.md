@@ -128,7 +128,7 @@ src/
 
 ## GraphQL API
 
-Connects to `https://api.yotuna.com/graphql` with the following queries:
+Connects to `https://api.yotuna.mobulum.com/graphql` with the following queries:
 
 | Query | Purpose |
 |---|---|
