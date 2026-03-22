@@ -144,7 +144,7 @@ export default function StationPage() {
               ) : (
                 <div className="divide-y divide-gray-100 dark:divide-gray-800">
                   {tracks.map((track, index) => (
-                    <PlaylistItem key={`${track.startedAt}-${index}`} track={track} />
+                    <PlaylistItem key={`${track.startedAt}-${index}`} track={track} isEven={index % 2 === 0} />
                   ))}
                 </div>
               )}

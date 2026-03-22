@@ -68,7 +68,7 @@ export default function AboutPage() {
       {/* Header */}
       <div className="text-center">
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-100 dark:bg-primary-900/30">
-          <Radio className="h-8 w-8 text-primary-600 dark:text-primary-400" />
+          <img src="/logo.png" alt="Yotuna" className="h-10 w-10" />
         </div>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t("about.title")}</h2>
         <p className="mt-2 text-gray-600 dark:text-gray-400">{t("about.description")}</p>

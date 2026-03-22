@@ -36,13 +36,13 @@ export default function StreamingButtons({ track }: StreamingButtonsProps) {
   }
 
   return (
-    <div className="flex flex-wrap gap-1.5">
+    <div className="flex flex-wrap gap-1">
       {available.map(service => (
         <button
           key={service.key}
           onClick={() => handleClick(service)}
           style={{ backgroundColor: service.color }}
-          className="rounded-full px-2.5 py-0.5 text-xs font-medium text-white transition-opacity hover:opacity-80"
+          className="rounded-full px-2 py-0.5 text-[11px] font-medium text-white transition-opacity hover:opacity-80 sm:px-2.5 sm:text-xs"
         >
           {service.label}
         </button>
