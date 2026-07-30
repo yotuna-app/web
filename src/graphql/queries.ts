@@ -50,6 +50,31 @@ export const GET_FAVORITE_STATIONS = gql`
   }
 `;
 
+export const GET_STATIONS_BY_ID = gql`
+  query GetStationsById($stationIds: [String]) {
+    getStationsById(stationIds: $stationIds) {
+      stations {
+        id
+        playlistAvailable
+        name
+        stream {
+          sd
+        }
+        imageUrl
+        websiteUrl
+        rating
+        genres
+        social {
+          facebook
+          twitter
+          instagram
+        }
+      }
+      total
+    }
+  }
+`;
+
 export const GET_STATION_PLAYLIST = gql`
   query getStationPlaylist($stationId: ID!, $from: String!, $to: String!) {
     getStationPlaylist(stationId: $stationId, from: $from, to: $to) {

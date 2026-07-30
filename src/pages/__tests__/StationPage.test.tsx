@@ -80,18 +80,18 @@ describe("StationPage", () => {
       }
       // Station query
       return {
-        data: { getStations: { stations: [mockStation], total: 1 } },
+        data: { getStationsById: { stations: [mockStation], total: 1 } },
         loading: false,
       };
     });
   });
 
-  async function renderPage(stationName = "Jazz FM") {
+  async function renderPage(stationId = "station-1") {
     const { default: StationPage } = await import("@/pages/StationPage");
     return render(
-      <MemoryRouter initialEntries={[`/station/${encodeURIComponent(stationName)}`]}>
+      <MemoryRouter initialEntries={[`/station/${encodeURIComponent(stationId)}`]}>
         <Routes>
-          <Route path="/station/:name" element={<StationPage />} />
+          <Route path="/station/:id" element={<StationPage />} />
         </Routes>
       </MemoryRouter>,
     );
@@ -120,7 +120,7 @@ describe("StationPage", () => {
 
   it("shows station not found when no station data", async () => {
     mockUseQuery.mockReturnValue({
-      data: { getStations: { stations: [], total: 0 } },
+      data: { getStationsById: { stations: [], total: 0 } },
       loading: false,
     });
     await renderPage("nonexistent");
@@ -137,7 +137,7 @@ describe("StationPage", () => {
   it("shows playlist not available message", async () => {
     const stationWithoutPlaylist = { ...mockStation, playlistAvailable: false };
     mockUseQuery.mockReturnValue({
-      data: { getStations: { stations: [stationWithoutPlaylist], total: 1 } },
+      data: { getStationsById: { stations: [stationWithoutPlaylist], total: 1 } },
       loading: false,
     });
     await renderPage();

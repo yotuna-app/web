@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@apollo/client";
 import { ArrowLeft, ListMusic } from "lucide-react";
-import { GET_STATIONS, GET_STATION_PLAYLIST } from "@/graphql/queries";
+import { GET_STATIONS_BY_ID, GET_STATION_PLAYLIST } from "@/graphql/queries";
 import { useConfigStore, useAudioStore } from "@/stores";
 import { tracker, AnalyticsEvents } from "@/analytics";
 import { getPlaylistDateRange } from "@/utils/dates";
@@ -15,16 +15,16 @@ import AudioPlayerBar from "@/components/common/AudioPlayerBar";
 import PageLoader from "@/components/common/PageLoader";
 import DayTabs from "@/components/playlist/DayTabs";
 import PlaylistItem from "@/components/playlist/PlaylistItem";
-import type { StationsResponse, StationPlaylistResponse } from "@/types";
+import type { StationsByIdResponse, StationPlaylistResponse } from "@/types";
 
 export default function StationPage() {
-  const { name } = useParams<{ name: string }>();
+  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { appConfig } = useConfigStore();
   const { currentStationId } = useAudioStore();
 
-  const decodedName = name ? decodeURIComponent(name) : "";
+  const stationId = id ? decodeURIComponent(id) : "";
 
   const [selectedDate, setSelectedDate] = useState(() => {
     const today = new Date();
@@ -32,14 +32,14 @@ export default function StationPage() {
     return today;
   });
 
-  // Fetch station details by name
-  const { data: stationData, loading: stationLoading } = useQuery<StationsResponse>(GET_STATIONS, {
-    variables: { query: decodedName, offset: 0, limit: 1 },
-    skip: !decodedName,
+  // Fetch station details by id
+  const { data: stationData, loading: stationLoading } = useQuery<StationsByIdResponse>(GET_STATIONS_BY_ID, {
+    variables: { stationIds: [stationId] },
+    skip: !stationId,
   });
 
   const station = useMemo(() => {
-    return stationData?.getStations?.stations?.[0] ?? null;
+    return stationData?.getStationsById?.stations?.[0] ?? null;
   }, [stationData]);
 
   // Fetch playlist using station id
@@ -54,9 +54,9 @@ export default function StationPage() {
 
   useEffect(() => {
     if (station?.id) {
-      tracker.trackEvent(AnalyticsEvents.STATION_DETAILS_VIEW, { stationId: station.id, stationName: decodedName });
+      tracker.trackEvent(AnalyticsEvents.STATION_DETAILS_VIEW, { stationId: station.id, stationName: station.name });
     }
-  }, [station?.id, decodedName]);
+  }, [station?.id, station?.name]);
 
   if (stationLoading) {
     return <PageLoader />;

@@ -54,6 +54,13 @@ export interface FavoriteStationsResponse {
   };
 }
 
+export interface StationsByIdResponse {
+  getStationsById: {
+    stations: Station[];
+    total: number;
+  };
+}
+
 export interface AppConfig {
   enableSubscriptions: boolean;
   favoritesLimit: number;

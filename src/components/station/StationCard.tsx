@@ -12,7 +12,7 @@ export default function StationCard({ station }: StationCardProps) {
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate(`/station/${encodeURIComponent(station.name)}`);
+    navigate(`/station/${encodeURIComponent(station.id)}`);
   }
 
   return (

@@ -28,7 +28,7 @@ export default function App() {
               }
             />
             <Route
-              path="station/:name"
+              path="station/:id"
               element={
                 <Suspense fallback={<PageLoader />}>
                   <StationPage />
