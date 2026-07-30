@@ -54,7 +54,8 @@
     "previous": "Anterior",
     "next": "Siguiente",
     "copyTrack": "Copiar información de la pista",
-    "backToStations": "Volver a las estaciones"
+    "backToStations": "Volver a las estaciones",
+    "backToFavorites": "Volver a favoritos"
   },
   "settings": {
     "title": "Configuración",

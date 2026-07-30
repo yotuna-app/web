@@ -54,7 +54,8 @@
     "previous": "上一个",
     "next": "下一个",
     "copyTrack": "复制曲目信息",
-    "backToStations": "返回电台"
+    "backToStations": "返回电台",
+    "backToFavorites": "返回收藏夹"
   },
   "settings": {
     "title": "设置",

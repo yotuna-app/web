@@ -54,7 +54,8 @@
     "previous": "前へ",
     "next": "次へ",
     "copyTrack": "トラック情報をコピー",
-    "backToStations": "局一覧に戻る"
+    "backToStations": "局一覧に戻る",
+    "backToFavorites": "お気に入りに戻る"
   },
   "settings": {
     "title": "設定",

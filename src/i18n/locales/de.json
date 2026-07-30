@@ -54,7 +54,8 @@
     "previous": "Vorherige",
     "next": "Nächste",
     "copyTrack": "Titelinformationen kopieren",
-    "backToStations": "Zurück zu den Sendern"
+    "backToStations": "Zurück zu den Sendern",
+    "backToFavorites": "Zurück zu den Favoriten"
   },
   "settings": {
     "title": "Einstellungen",

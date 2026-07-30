@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { Star, Radio } from "lucide-react";
 import { GET_STATIONS, GET_FAVORITE_STATIONS, GET_APP_CONFIG } from "@/graphql/queries";
@@ -14,12 +15,13 @@ type Tab = "all" | "favorites";
 
 export default function HomePage() {
   const { t } = useTranslation();
+  const location = useLocation();
   const { appConfig, setConfig } = useConfigStore();
   const { getFavoriteIds, getFavoritesCount } = useFavoritesStore();
   const { currentStationId } = useAudioStore();
 
   const [search, setSearch] = useState("");
-  const [tab, setTab] = useState<Tab>("all");
+  const [tab, setTab] = useState<Tab>(() => ((location.state as { tab?: Tab } | null)?.tab === "favorites" ? "favorites" : "all"));
   const [offset, setOffset] = useState(0);
   const loadMoreRef = useRef<HTMLDivElement>(null);
 
@@ -151,6 +153,7 @@ export default function HomePage() {
             stations={stations}
             loading={stationsLoading && stations.length === 0}
             emptyMessage={search ? t("common.noResults") : undefined}
+            from="all"
           />
           {hasMore && <div ref={loadMoreRef} className="h-1" />}
         </>
@@ -159,6 +162,7 @@ export default function HomePage() {
           stations={favoriteStations}
           loading={favLoading}
           emptyMessage={t("common.noResults")}
+          from="favorites"
         />
       )}
 

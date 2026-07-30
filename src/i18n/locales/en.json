@@ -54,7 +54,8 @@
     "previous": "Previous",
     "next": "Next",
     "copyTrack": "Copy track info",
-    "backToStations": "Back to stations"
+    "backToStations": "Back to stations",
+    "backToFavorites": "Back to favorites"
   },
   "settings": {
     "title": "Settings",

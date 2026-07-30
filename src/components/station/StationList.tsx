@@ -7,9 +7,10 @@ interface StationListProps {
   stations: Station[];
   loading?: boolean;
   emptyMessage?: string;
+  from?: "all" | "favorites";
 }
 
-export default function StationList({ stations, loading, emptyMessage }: StationListProps) {
+export default function StationList({ stations, loading, emptyMessage, from }: StationListProps) {
   const { t } = useTranslation();
 
   if (loading) {
@@ -27,7 +28,7 @@ export default function StationList({ stations, loading, emptyMessage }: Station
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {stations.map((station) => (
-        <StationCard key={station.id} station={station} />
+        <StationCard key={station.id} station={station} from={from} />
       ))}
     </div>
   );

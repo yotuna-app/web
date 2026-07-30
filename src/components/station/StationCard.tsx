@@ -6,13 +6,14 @@ import type { Station } from "@/types";
 
 interface StationCardProps {
   station: Station;
+  from?: "all" | "favorites";
 }
 
-export default function StationCard({ station }: StationCardProps) {
+export default function StationCard({ station, from }: StationCardProps) {
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate(`/station/${encodeURIComponent(station.id)}`);
+    navigate(`/station/${encodeURIComponent(station.id)}`, { state: { from } });
   }
 
   return (

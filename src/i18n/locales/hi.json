@@ -54,7 +54,8 @@
     "previous": "पिछला",
     "next": "अगला",
     "copyTrack": "ट्रैक जानकारी कॉपी करें",
-    "backToStations": "स्टेशनों पर वापस"
+    "backToStations": "स्टेशनों पर वापस",
+    "backToFavorites": "पसंदीदा पर वापस"
   },
   "settings": {
     "title": "सेटिंग्स",

@@ -54,7 +54,8 @@
     "previous": "Poprzedni",
     "next": "Następny",
     "copyTrack": "Kopiuj informacje o utworze",
-    "backToStations": "Powrót do stacji"
+    "backToStations": "Powrót do stacji",
+    "backToFavorites": "Powrót do ulubionych"
   },
   "settings": {
     "title": "Ustawienia",

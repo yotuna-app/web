@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@apollo/client";
 import { ArrowLeft, ListMusic } from "lucide-react";
@@ -20,7 +20,15 @@ import type { StationsByIdResponse, StationPlaylistResponse } from "@/types";
 export default function StationPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation();
+
+  const fromTab = (location.state as { from?: "all" | "favorites" } | null)?.from;
+  const backLabel = fromTab === "favorites" ? t("station.backToFavorites") : t("station.backToStations");
+
+  function handleBack() {
+    navigate("/", fromTab === "favorites" ? { state: { tab: "favorites" } } : undefined);
+  }
   const { appConfig } = useConfigStore();
   const { currentStationId } = useAudioStore();
 
@@ -67,11 +75,11 @@ export default function StationPage() {
       <div className="flex min-h-[40vh] flex-col items-center justify-center gap-4">
         <p className="text-gray-500 dark:text-gray-400">{t("common.noResults")}</p>
         <button
-          onClick={() => navigate("/")}
+          onClick={handleBack}
           className="flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium text-primary-600 transition-colors hover:bg-primary-50 dark:text-primary-400 dark:hover:bg-primary-900/20"
         >
           <ArrowLeft className="h-4 w-4" />
-          {t("station.backToStations")}
+          {backLabel}
         </button>
       </div>
     );
@@ -81,11 +89,11 @@ export default function StationPage() {
     <div className={`${currentStationId ? "pb-20" : ""}`}>
       {/* Back button */}
       <button
-        onClick={() => navigate("/")}
+        onClick={handleBack}
         className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
       >
         <ArrowLeft className="h-4 w-4" />
-        {t("station.backToStations")}
+        {backLabel}
       </button>
 
       {/* Main content - two-column on lg+ */}

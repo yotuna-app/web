@@ -54,7 +54,8 @@
     "previous": "السابق",
     "next": "التالي",
     "copyTrack": "نسخ معلومات المسار",
-    "backToStations": "العودة إلى المحطات"
+    "backToStations": "العودة إلى المحطات",
+    "backToFavorites": "العودة إلى المفضلة"
   },
   "settings": {
     "title": "الإعدادات",
