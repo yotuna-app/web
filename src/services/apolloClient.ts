@@ -4,7 +4,7 @@ import { setContext } from "@apollo/client/link/context";
 import { appSettings } from "@/constants/app";
 import { useDeviceStore } from "@/stores";
 
-const API_HTTP_ENDPOINT = "https://api.yotuna.mobulum.com/graphql";
+const API_HTTP_ENDPOINT = "https://api-yotuna.mobulum.com/graphql";
 
 // Error handling link
 const errorLink = onError(({ networkError, graphQLErrors }) => {

@@ -284,7 +284,7 @@ Mocks for jsdom-missing APIs:
 
 ## GraphQL
 
-- API endpoint: `https://api.yotuna.mobulum.com/graphql`
+- API endpoint: `https://api-yotuna.mobulum.com/graphql`
 - 4 queries: `GetStations`, `GetFavoriteStations`, `GetStationPlaylist`, `GetAppConfig`
 - No mutations, no subscriptions (on web)
 - Custom headers: `x-device-id` (UUID), `x-app-version` (currently `"1.0.7"`)
