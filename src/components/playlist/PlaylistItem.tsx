@@ -22,7 +22,7 @@ export default function PlaylistItem({ track, isEven }: PlaylistItemProps) {
     try {
       await navigator.clipboard.writeText(text);
       tracker.trackEvent(AnalyticsEvents.PLAYLIST_TRACK_COPIED, { title: track.title, artists: track.artists });
-      showToast(t("station.copiedToClipboard"));
+      showToast(t("common.copiedToClipboard"));
     } catch {
       // Clipboard API not available or denied
     }

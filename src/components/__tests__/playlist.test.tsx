@@ -19,6 +19,7 @@ vi.mock("react-i18next", () => ({
         "station.openInTidal": "Tidal",
         "station.openInSpotify": "Spotify",
         "station.openInAppleMusic": "Apple Music",
+        "station.trackNotFound": "Track not found",
       };
       return map[key] ?? key;
     },
@@ -67,20 +68,31 @@ describe("StreamingButtons", () => {
     expect(screen.getByText("Apple Music")).toBeInTheDocument();
   });
 
-  it("renders nothing when no streaming IDs available", () => {
-    const { container } = render(<StreamingButtons track={trackWithoutStreaming} />);
-    expect(container.innerHTML).toBe("");
+  it("renders all four service buttons even when no streaming IDs available", () => {
+    render(<StreamingButtons track={trackWithoutStreaming} />);
+    expect(screen.getByText("Deezer")).toBeInTheDocument();
+    expect(screen.getByText("Spotify")).toBeInTheDocument();
+    expect(screen.getByText("Tidal")).toBeInTheDocument();
+    expect(screen.getByText("Apple Music")).toBeInTheDocument();
   });
 
-  it("only renders buttons for services with track IDs", () => {
+  it("dims buttons for services without a track ID", () => {
     const partialTrack: PlaylistTrack = {
       ...trackWithoutStreaming,
       spotifyTrackId: "abc",
     };
     render(<StreamingButtons track={partialTrack} />);
-    expect(screen.getByText("Spotify")).toBeInTheDocument();
-    expect(screen.queryByText("Deezer")).not.toBeInTheDocument();
-    expect(screen.queryByText("Tidal")).not.toBeInTheDocument();
+    expect(screen.getByText("Spotify").className).not.toContain("opacity-30");
+    expect(screen.getByText("Deezer").className).toContain("opacity-30");
+    expect(screen.getByText("Tidal").className).toContain("opacity-30");
+  });
+
+  it("shows a not-found toast when clicking a dimmed service", async () => {
+    const { default: userEvent } = await import("@testing-library/user-event");
+    const user = userEvent.setup();
+    render(<StreamingButtons track={trackWithoutStreaming} />);
+    await user.click(screen.getByText("Spotify"));
+    expect(screen.getByText("Track not found")).toBeInTheDocument();
   });
 
   it("applies brand colors to buttons", () => {

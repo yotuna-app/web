@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { tracker, AnalyticsEvents } from "@/analytics";
+import { useToast } from "@/hooks/useToast";
+import Toast from "@/components/common/Toast";
 import type { PlaylistTrack } from "@/types";
 
 interface StreamingButtonsProps {
@@ -16,6 +18,7 @@ interface StreamingService {
 
 export default function StreamingButtons({ track }: StreamingButtonsProps) {
   const { t } = useTranslation();
+  const { toast, showToast } = useToast();
 
   const services: StreamingService[] = [
     { key: "deezer", label: t("station.openInDeezer"), trackId: track.deezerTrackId, url: id => `https://www.deezer.com/track/${id}`, color: "#EF5466" },
@@ -24,29 +27,35 @@ export default function StreamingButtons({ track }: StreamingButtonsProps) {
     { key: "apple", label: t("station.openInAppleMusic"), trackId: track.appleTrackId, url: id => `https://music.apple.com/song/${id}`, color: "#FA243C" },
   ];
 
-  const available = services.filter(s => s.trackId);
-
-  if (available.length === 0) {
-    return null;
-  }
-
-  function handleClick(service: StreamingService) {
+  function handleClick(e: React.MouseEvent, service: StreamingService) {
+    e.stopPropagation();
+    if (!service.trackId) {
+      showToast(t("station.trackNotFound"));
+      return;
+    }
     tracker.trackEvent(AnalyticsEvents.STREAMING_LINK_CLICKED, { service: service.key, trackId: service.trackId });
-    window.open(service.url(service.trackId!), "_blank", "noopener,noreferrer");
+    window.open(service.url(service.trackId), "_blank", "noopener,noreferrer");
   }
 
   return (
-    <div className="flex flex-wrap gap-1">
-      {available.map(service => (
-        <button
-          key={service.key}
-          onClick={() => handleClick(service)}
-          style={{ backgroundColor: service.color }}
-          className="rounded-full px-2 py-0.5 text-[11px] font-medium text-white transition-opacity hover:opacity-80 sm:px-2.5 sm:text-xs"
-        >
-          {service.label}
-        </button>
-      ))}
-    </div>
+    <>
+      <div className="flex flex-wrap gap-1">
+        {services.map(service => {
+          const disabled = !service.trackId;
+          return (
+            <button
+              key={service.key}
+              onClick={e => handleClick(e, service)}
+              style={{ backgroundColor: service.color }}
+              className={`rounded-full px-2 py-0.5 text-[11px] font-medium text-white transition-opacity sm:px-2.5 sm:text-xs ${disabled ? "opacity-30 hover:opacity-40" : "hover:opacity-80"}`}
+            >
+              {service.label}
+            </button>
+          );
+        })}
+      </div>
+
+      <Toast message={toast.message} visible={toast.visible} />
+    </>
   );
 }
