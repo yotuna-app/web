@@ -39,7 +39,7 @@ Auto-deployed to GitHub Pages via `.github/workflows/deploy.yml` on push to `mai
 
 - **Custom domain**: `yotuna.mobulum.com` (configured via `public/CNAME`)
 - **Base path**: `/` (configured in `vite.config.ts`)
-- **SPA routing**: `public/404.html` handles GitHub Pages SPA redirect for client-side routes
+- **SPA routing**: `public/404.html` redirects deep links to `index.html`; a restore script in `index.html` rewrites the URL via `history.replaceState` so refreshing routes like `/station/:id` works
 - **Node version**: 22 (in CI)
 - **Build artifact**: `dist/` directory uploaded to GitHub Pages
 
@@ -285,7 +285,7 @@ Mocks for jsdom-missing APIs:
 ## GraphQL
 
 - API endpoint: `https://api-yotuna.mobulum.com/graphql`
-- 4 queries: `GetStations`, `GetFavoriteStations`, `GetStationPlaylist`, `GetAppConfig`
+- 5 queries: `GetStations`, `GetFavoriteStations`, `GetStationsById`, `GetStationPlaylist`, `GetAppConfig`
 - No mutations, no subscriptions (on web)
 - Custom headers: `x-device-id` (UUID), `x-app-version` (currently `"1.0.7"`)
 - `InMemoryCache` with merge policy for `getStations` (offset-based pagination)

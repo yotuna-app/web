@@ -134,6 +134,7 @@ Connects to `https://api-yotuna.mobulum.com/graphql` with the following queries:
 |---|---|
 | `GetStations` | Search and paginate all stations |
 | `GetFavoriteStations` | Fetch stations by IDs (for favorites) |
+| `GetStationsById` | Fetch station details by ID (station detail page) |
 | `GetStationPlaylist` | Get playlist entries for a station and date range |
 | `GetAppConfig` | Fetch app configuration (limits, URLs, feature flags) |
 
@@ -159,7 +160,7 @@ Point your custom domain to GitHub Pages:
 
 ### SPA Routing on GitHub Pages
 
-GitHub Pages doesn't support client-side routing natively. The `public/404.html` file handles this by redirecting all 404s back to `index.html` with the original path preserved as a query parameter, which React Router then resolves.
+GitHub Pages doesn't support client-side routing natively. The `public/404.html` file handles this by redirecting all 404s back to `index.html` with the original path preserved as a query parameter. A small restore script in `index.html` then rewrites the browser URL back to the original path (via `history.replaceState`) so React Router resolves it correctly — this is what makes refreshing a deep link like `/station/:id` work instead of falling back to the home page.
 
 ### Manual Deploy
 
