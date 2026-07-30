@@ -27,7 +27,7 @@ export default function StationPage() {
   const backLabel = fromTab === "favorites" ? t("station.backToFavorites") : t("station.backToStations");
 
   function handleBack() {
-    navigate("/", fromTab === "favorites" ? { state: { tab: "favorites" } } : undefined);
+    navigate(fromTab === "favorites" ? "/favorites" : "/");
   }
   const { appConfig } = useConfigStore();
   const { currentStationId } = useAudioStore();

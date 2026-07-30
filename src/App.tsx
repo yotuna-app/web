@@ -28,6 +28,14 @@ export default function App() {
               }
             />
             <Route
+              path="favorites"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <HomePage />
+                </Suspense>
+              }
+            />
+            <Route
               path="station/:id"
               element={
                 <Suspense fallback={<PageLoader />}>

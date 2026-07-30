@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { Star, Radio } from "lucide-react";
 import { GET_STATIONS, GET_FAVORITE_STATIONS, GET_APP_CONFIG } from "@/graphql/queries";
@@ -16,12 +16,13 @@ type Tab = "all" | "favorites";
 export default function HomePage() {
   const { t } = useTranslation();
   const location = useLocation();
+  const navigate = useNavigate();
   const { appConfig, setConfig } = useConfigStore();
   const { getFavoriteIds, getFavoritesCount } = useFavoritesStore();
   const { currentStationId } = useAudioStore();
 
   const [search, setSearch] = useState("");
-  const [tab, setTab] = useState<Tab>(() => ((location.state as { tab?: Tab } | null)?.tab === "favorites" ? "favorites" : "all"));
+  const tab: Tab = location.pathname === "/favorites" ? "favorites" : "all";
   const [offset, setOffset] = useState(0);
   const loadMoreRef = useRef<HTMLDivElement>(null);
 
@@ -111,7 +112,7 @@ export default function HomePage() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-2">
           <button
-            onClick={() => setTab("all")}
+            onClick={() => navigate("/")}
             className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
               tab === "all"
                 ? "bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400"
@@ -122,7 +123,7 @@ export default function HomePage() {
             {t("home.allStations")}
           </button>
           <button
-            onClick={() => setTab("favorites")}
+            onClick={() => navigate("/favorites")}
             className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
               tab === "favorites"
                 ? "bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400"
