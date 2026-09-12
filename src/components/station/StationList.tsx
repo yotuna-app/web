@@ -7,7 +7,7 @@ interface StationListProps {
   stations: Station[];
   loading?: boolean;
   emptyMessage?: string;
-  from?: "all" | "favorites";
+  from?: "all" | "favorites" | "genres";
 }
 
 export default function StationList({ stations, loading, emptyMessage, from }: StationListProps) {

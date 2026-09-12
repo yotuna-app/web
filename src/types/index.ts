@@ -78,6 +78,7 @@ export interface AppConfig {
   playlistDaysBack: number;
   websiteUrl: string;
   privacyUrl: string;
+  genres?: string[];
 }
 
 export interface AppConfigResponse {

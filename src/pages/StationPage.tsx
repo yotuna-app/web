@@ -23,11 +23,44 @@ export default function StationPage() {
   const location = useLocation();
   const { t } = useTranslation();
 
-  const fromTab = (location.state as { from?: "all" | "favorites" } | null)?.from;
-  const backLabel = fromTab === "favorites" ? t("station.backToFavorites") : t("station.backToStations");
+  const locationState = location.state as { from?: "all" | "favorites" | "genres"; search?: string } | null;
+  const fromTab = locationState?.from;
+  const previousSearch = locationState?.search ? `?${locationState.search}` : "";
+
+  const backLabel =
+    fromTab === "favorites"
+      ? t("station.backToFavorites")
+      : fromTab === "genres"
+        ? t("station.backToGenres")
+        : t("station.backToStations");
 
   function handleBack() {
-    navigate(fromTab === "favorites" ? "/favorites" : "/");
+    if (fromTab === "favorites") {
+      navigate("/favorites");
+    } else if (fromTab === "genres") {
+      navigate(`/genres${previousSearch}`);
+    } else {
+      navigate(`/${previousSearch}`);
+    }
+  }
+
+  function handleGenreClick(genre: string) {
+    const searchParams = new URLSearchParams(locationState?.search || "");
+    const raw = searchParams.get("genres");
+    const current = raw
+      ? raw
+          .split(",")
+          .map((g) => g.trim())
+          .filter((g) => g.length > 0)
+      : [];
+
+    if (current.includes(genre)) {
+      navigate(`/genres?genres=${encodeURIComponent(current.join(","))}`);
+      return;
+    }
+
+    const next = [...current, genre];
+    navigate(`/genres?genres=${encodeURIComponent(next.join(","))}`);
   }
   const { appConfig } = useConfigStore();
   const { currentStationId } = useAudioStore();
@@ -110,9 +143,14 @@ export default function StationPage() {
                 {station.genres && station.genres.length > 0 && (
                   <div className="flex flex-wrap gap-1.5 lg:justify-center">
                     {station.genres.map((genre) => (
-                      <span key={genre} className="inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                      <button
+                        key={genre}
+                        type="button"
+                        onClick={() => handleGenreClick(genre)}
+                        className="inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600 transition-colors hover:bg-primary-50 hover:text-primary-600 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-primary-900/30 dark:hover:text-primary-300"
+                      >
                         {genre}
-                      </span>
+                      </button>
                     ))}
                   </div>
                 )}

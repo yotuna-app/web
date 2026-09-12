@@ -36,7 +36,10 @@
     "title": "广播电台",
     "errorLoadingStations": "加载电台时出错",
     "favorites": "收藏夹",
-    "allStations": "所有电台"
+    "allStations": "所有电台",
+    "genres": "流派",
+    "filterByGenre": "按流派筛选",
+    "clearFilters": "清除全部"
   },
   "station": {
     "noPlaylist": "没有可用的播放列表",
@@ -55,7 +58,8 @@
     "next": "下一个",
     "copyTrack": "复制曲目信息",
     "backToStations": "返回电台",
-    "backToFavorites": "返回收藏夹"
+    "backToFavorites": "返回收藏夹",
+    "backToGenres": "返回流派"
   },
   "settings": {
     "title": "设置",

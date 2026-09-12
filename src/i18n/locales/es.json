@@ -36,7 +36,10 @@
     "title": "Estaciones de radio",
     "errorLoadingStations": "Error al cargar las estaciones",
     "favorites": "Favoritos",
-    "allStations": "Todas las estaciones"
+    "allStations": "Todas las estaciones",
+    "genres": "Géneros",
+    "filterByGenre": "Filtrar por género",
+    "clearFilters": "Borrar todo"
   },
   "station": {
     "noPlaylist": "No hay lista de reproducción disponible",
@@ -55,7 +58,8 @@
     "next": "Siguiente",
     "copyTrack": "Copiar información de la pista",
     "backToStations": "Volver a las estaciones",
-    "backToFavorites": "Volver a favoritos"
+    "backToFavorites": "Volver a favoritos",
+    "backToGenres": "Volver a géneros"
   },
   "settings": {
     "title": "Configuración",

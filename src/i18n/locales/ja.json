@@ -36,7 +36,10 @@
     "title": "ラジオ局",
     "errorLoadingStations": "局の読み込みエラー",
     "favorites": "お気に入り",
-    "allStations": "すべての局"
+    "allStations": "すべての局",
+    "genres": "ジャンル",
+    "filterByGenre": "ジャンルで絞り込む",
+    "clearFilters": "すべてクリア"
   },
   "station": {
     "noPlaylist": "利用可能なプレイリストがありません",
@@ -55,7 +58,8 @@
     "next": "次へ",
     "copyTrack": "トラック情報をコピー",
     "backToStations": "局一覧に戻る",
-    "backToFavorites": "お気に入りに戻る"
+    "backToFavorites": "お気に入りに戻る",
+    "backToGenres": "ジャンル一覧に戻る"
   },
   "settings": {
     "title": "設定",

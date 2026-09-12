@@ -105,6 +105,78 @@ describe("StationCard", () => {
     expect(screen.getByText("Jazz")).toBeInTheDocument();
     expect(screen.queryByText("Funk")).not.toBeInTheDocument();
   });
+
+  it("renders genre chips as clickable buttons", () => {
+    render(
+      <MemoryRouter>
+        <StationCard station={mockStation} />
+      </MemoryRouter>,
+    );
+    const jazzButton = screen.getByRole("button", { name: "Jazz" });
+    expect(jazzButton).toBeInTheDocument();
+  });
+
+  it("appends clicked genre to existing genres query param", async () => {
+    const user = (await import("@testing-library/user-event")).default.setup();
+    const { Routes, Route, useSearchParams } = await import("react-router-dom");
+
+    function DummyGenres() {
+      const [searchParams] = useSearchParams();
+      return <div>Genres Page: {searchParams.get("genres") || ""}</div>;
+    }
+
+    render(
+      <MemoryRouter initialEntries={["/genres?genres=Blues"]}>
+        <Routes>
+          <Route
+            path="/genres"
+            element={
+              <>
+                <DummyGenres />
+                <StationCard station={mockStation} />
+              </>
+            }
+          />
+        </Routes>
+      </MemoryRouter>,
+    );
+
+    const jazzButton = screen.getByRole("button", { name: "Jazz" });
+    await user.click(jazzButton);
+
+    expect(screen.getByText("Genres Page: Blues,Jazz")).toBeInTheDocument();
+  });
+
+  it("does not duplicate genre if already present in query param", async () => {
+    const user = (await import("@testing-library/user-event")).default.setup();
+    const { Routes, Route, useSearchParams } = await import("react-router-dom");
+
+    function DummyGenres() {
+      const [searchParams] = useSearchParams();
+      return <div>Genres Page: {searchParams.get("genres") || ""}</div>;
+    }
+
+    render(
+      <MemoryRouter initialEntries={["/genres?genres=Jazz"]}>
+        <Routes>
+          <Route
+            path="/genres"
+            element={
+              <>
+                <DummyGenres />
+                <StationCard station={mockStation} />
+              </>
+            }
+          />
+        </Routes>
+      </MemoryRouter>,
+    );
+
+    const jazzButton = screen.getByRole("button", { name: "Jazz" });
+    await user.click(jazzButton);
+
+    expect(screen.getByText("Genres Page: Jazz")).toBeInTheDocument();
+  });
 });
 
 describe("FavoriteButton", () => {

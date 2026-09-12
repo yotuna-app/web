@@ -1,30 +1,42 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { Star, Radio } from "lucide-react";
+import { Star, Radio, Tag } from "lucide-react";
 import { GET_STATIONS, GET_FAVORITE_STATIONS, GET_APP_CONFIG } from "@/graphql/queries";
 import { useConfigStore, useFavoritesStore, useAudioStore } from "@/stores";
 import { tracker, AnalyticsEvents } from "@/analytics";
 import SearchBar from "@/components/common/SearchBar";
+import GenreFilter from "@/components/genre/GenreFilter";
 import StationList from "@/components/station/StationList";
 import AudioPlayerBar from "@/components/common/AudioPlayerBar";
 import type { StationsResponse, FavoriteStationsResponse, AppConfigResponse } from "@/types";
 
-type Tab = "all" | "favorites";
+type Tab = "all" | "favorites" | "genres";
 
 export default function HomePage() {
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { appConfig, setConfig } = useConfigStore();
   const { getFavoriteIds, getFavoritesCount } = useFavoritesStore();
   const { currentStationId } = useAudioStore();
 
   const [search, setSearch] = useState("");
-  const tab: Tab = location.pathname === "/favorites" ? "favorites" : "all";
+  const tab: Tab = location.pathname === "/favorites" ? "favorites" : location.pathname === "/genres" ? "genres" : "all";
   const [offset, setOffset] = useState(0);
   const loadMoreRef = useRef<HTMLDivElement>(null);
+
+  // Read selected genres from searchParams (e.g. ?genres=Pop,Rock)
+  const selectedGenres = useMemo(() => {
+    const raw = searchParams.get("genres");
+    if (!raw) return [];
+    return raw
+      .split(",")
+      .map((g) => g.trim())
+      .filter((g) => g.length > 0);
+  }, [searchParams]);
 
   // Fetch app config
   const { data: configData } = useQuery<AppConfigResponse>(GET_APP_CONFIG);
@@ -34,13 +46,19 @@ export default function HomePage() {
     }
   }, [configData, setConfig]);
 
-  // Fetch all stations
+  // Fetch stations (used for 'all' and 'genres' tabs)
+  const queryGenres = tab === "genres" && selectedGenres.length > 0 ? selectedGenres : undefined;
   const {
     data: stationsData,
     loading: stationsLoading,
     fetchMore,
   } = useQuery<StationsResponse>(GET_STATIONS, {
-    variables: { query: search, offset: 0, limit: appConfig.stationsPageLimit },
+    variables: {
+      query: search,
+      offset: 0,
+      limit: appConfig.stationsPageLimit,
+      genres: queryGenres,
+    },
     notifyOnNetworkStatusChange: true,
   });
 
@@ -58,17 +76,13 @@ export default function HomePage() {
   const favoriteStations = favData?.getStationsById?.stations ?? [];
 
   useEffect(() => {
-    tracker.trackPageView("home");
-  }, []);
-
-  // Reset offset when search changes
-  useEffect(() => {
-    setOffset(0);
-  }, [search]);
+    tracker.trackPageView(tab === "genres" ? "genres" : tab === "favorites" ? "favorites" : "home");
+  }, [tab]);
 
   const handleSearch = useCallback(
     (value: string) => {
       setSearch(value);
+      setOffset(0);
       if (value.length > 0) {
         tracker.trackEvent(AnalyticsEvents.SEARCH_PERFORMED, { query: value });
       } else {
@@ -78,18 +92,38 @@ export default function HomePage() {
     [],
   );
 
-  function handleLoadMore() {
+  const handleToggleGenre = useCallback(
+    (genre: string) => {
+      setOffset(0);
+      const isSelected = selectedGenres.includes(genre);
+      const nextGenres = isSelected ? selectedGenres.filter((g) => g !== genre) : [...selectedGenres, genre];
+
+      if (nextGenres.length === 0) {
+        setSearchParams({}, { replace: true });
+      } else {
+        setSearchParams({ genres: nextGenres.join(",") }, { replace: true });
+      }
+    },
+    [selectedGenres, setSearchParams],
+  );
+
+  const handleClearGenres = useCallback(() => {
+    setOffset(0);
+    setSearchParams({}, { replace: true });
+  }, [setSearchParams]);
+
+  const handleLoadMore = useCallback(() => {
     if (!hasMore || stationsLoading) return;
     const newOffset = offset + appConfig.stationsPageLimit;
     setOffset(newOffset);
     fetchMore({
       variables: { offset: newOffset },
     });
-  }
+  }, [hasMore, stationsLoading, offset, appConfig.stationsPageLimit, fetchMore]);
 
   // Infinite scroll observer
   useEffect(() => {
-    if (!loadMoreRef.current || !hasMore || tab !== "all") return;
+    if (!loadMoreRef.current || !hasMore || tab === "favorites") return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -102,15 +136,16 @@ export default function HomePage() {
 
     observer.observe(loadMoreRef.current);
     return () => observer.disconnect();
-  }, [hasMore, stationsLoading, offset, tab]);
+  }, [hasMore, handleLoadMore, tab]);
 
   const favCount = getFavoritesCount();
+  const availableGenres = appConfig.genres ?? [];
 
   return (
     <div className={`space-y-4 ${currentStationId ? "pb-20" : ""}`}>
       {/* Search + Tab bar */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={() => navigate("/")}
             className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
@@ -138,14 +173,40 @@ export default function HomePage() {
               </span>
             )}
           </button>
+          <button
+            onClick={() => navigate("/genres")}
+            className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+              tab === "genres"
+                ? "bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400"
+                : "text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
+            }`}
+          >
+            <Tag className="h-4 w-4" />
+            {t("home.genres")}
+            {selectedGenres.length > 0 && (
+              <span className="ml-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-primary-100 px-1.5 text-xs font-semibold text-primary-600 dark:bg-primary-900/30 dark:text-primary-400">
+                {selectedGenres.length}
+              </span>
+            )}
+          </button>
         </div>
 
-        {tab === "all" && (
+        {tab !== "favorites" && (
           <div className="w-full sm:max-w-xs">
             <SearchBar value={search} onChange={handleSearch} placeholder={t("common.search")} />
           </div>
         )}
       </div>
+
+      {/* Genres filter bar when in genres tab */}
+      {tab === "genres" && (
+        <GenreFilter
+          genres={availableGenres}
+          selectedGenres={selectedGenres}
+          onToggleGenre={handleToggleGenre}
+          onClearGenres={handleClearGenres}
+        />
+      )}
 
       {/* Station list */}
       {tab === "all" ? (
@@ -155,6 +216,16 @@ export default function HomePage() {
             loading={stationsLoading && stations.length === 0}
             emptyMessage={search ? t("common.noResults") : undefined}
             from="all"
+          />
+          {hasMore && <div ref={loadMoreRef} className="h-1" />}
+        </>
+      ) : tab === "genres" ? (
+        <>
+          <StationList
+            stations={stations}
+            loading={stationsLoading && stations.length === 0}
+            emptyMessage={t("common.noResults")}
+            from="genres"
           />
           {hasMore && <div ref={loadMoreRef} className="h-1" />}
         </>

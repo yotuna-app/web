@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import PlayButton from "@/components/common/PlayButton";
 import FavoriteButton from "./FavoriteButton";
 import StationImage from "./StationImage";
@@ -6,14 +6,36 @@ import type { Station } from "@/types";
 
 interface StationCardProps {
   station: Station;
-  from?: "all" | "favorites";
+  from?: "all" | "favorites" | "genres";
 }
 
 export default function StationCard({ station, from }: StationCardProps) {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   function handleClick() {
-    navigate(`/station/${encodeURIComponent(station.id)}`, { state: { from } });
+    navigate(`/station/${encodeURIComponent(station.id)}`, {
+      state: { from, search: searchParams.toString() },
+    });
+  }
+
+  function handleGenreClick(e: React.MouseEvent, genre: string) {
+    e.stopPropagation();
+    const raw = searchParams.get("genres");
+    const current = raw
+      ? raw
+          .split(",")
+          .map((g) => g.trim())
+          .filter((g) => g.length > 0)
+      : [];
+
+    if (current.includes(genre)) {
+      navigate(`/genres?genres=${encodeURIComponent(current.join(","))}`);
+      return;
+    }
+
+    const next = [...current, genre];
+    navigate(`/genres?genres=${encodeURIComponent(next.join(","))}`);
   }
 
   return (
@@ -29,9 +51,14 @@ export default function StationCard({ station, from }: StationCardProps) {
         {station.genres && station.genres.length > 0 && (
           <div className="mt-1 flex flex-wrap gap-1">
             {station.genres.slice(0, 3).map((genre) => (
-              <span key={genre} className="inline-block rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-500 dark:bg-gray-700 dark:text-gray-400">
+              <button
+                key={genre}
+                type="button"
+                onClick={(e) => handleGenreClick(e, genre)}
+                className="inline-block rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-500 transition-colors hover:bg-primary-50 hover:text-primary-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-primary-900/30 dark:hover:text-primary-300"
+              >
                 {genre}
-              </span>
+              </button>
             ))}
           </div>
         )}

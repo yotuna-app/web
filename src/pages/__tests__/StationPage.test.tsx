@@ -16,6 +16,8 @@ vi.mock("react-i18next", () => ({
       const map: Record<string, string> = {
         "common.noResults": "Station not found",
         "station.backToStations": "Back to Stations",
+        "station.backToFavorites": "Back to Favorites",
+        "station.backToGenres": "Back to genres",
         "station.playlist": "Playlist",
         "station.noPlaylistData": "No playlist data",
         "station.playlistNotAvailable": "Playlist not available",
@@ -142,5 +144,23 @@ describe("StationPage", () => {
     });
     await renderPage();
     expect(screen.getByText("Playlist not available")).toBeInTheDocument();
+  });
+
+  it("renders genres as clickable buttons", async () => {
+    await renderPage();
+    const jazzButton = screen.getByRole("button", { name: "Jazz" });
+    expect(jazzButton).toBeInTheDocument();
+  });
+
+  it("shows back to genres label when navigated from genres", async () => {
+    const { default: StationPage } = await import("@/pages/StationPage");
+    render(
+      <MemoryRouter initialEntries={[{ pathname: "/station/station-1", state: { from: "genres" } }]}>
+        <Routes>
+          <Route path="/station/:id" element={<StationPage />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+    expect(screen.getByText("Back to genres")).toBeInTheDocument();
   });
 });

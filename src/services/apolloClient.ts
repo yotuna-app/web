@@ -44,7 +44,7 @@ const cache = new InMemoryCache({
     Query: {
       fields: {
         getStations: {
-          keyArgs: ["query"],
+          keyArgs: ["query", "genres"],
           merge(existing = { stations: [], total: 0 }, incoming, { args }) {
             return {
               stations: args?.offset ? [...existing.stations, ...incoming.stations] : incoming.stations,

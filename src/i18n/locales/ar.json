@@ -36,7 +36,10 @@
     "title": "محطات الراديو",
     "errorLoadingStations": "خطأ في تحميل المحطات",
     "favorites": "المفضلة",
-    "allStations": "جميع المحطات"
+    "allStations": "جميع المحطات",
+    "genres": "الأنواع الموسيقية",
+    "filterByGenre": "تصفية حسب النوع",
+    "clearFilters": "مسح الكل"
   },
   "station": {
     "noPlaylist": "لا توجد قائمة تشغيل متاحة",
@@ -55,7 +58,8 @@
     "next": "التالي",
     "copyTrack": "نسخ معلومات المسار",
     "backToStations": "العودة إلى المحطات",
-    "backToFavorites": "العودة إلى المفضلة"
+    "backToFavorites": "العودة إلى المفضلة",
+    "backToGenres": "العودة إلى الأنواع"
   },
   "settings": {
     "title": "الإعدادات",

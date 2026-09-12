@@ -17,4 +17,5 @@ export const appSettings = {
   playlistDaysBack: 6,
   websiteUrl: "https://yotuna.com",
   privacyUrl: "https://yotuna.com/privacy.html",
+  genres: [] as string[],
 };

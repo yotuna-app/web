@@ -17,6 +17,9 @@ vi.mock("react-i18next", () => ({
       const map: Record<string, string> = {
         "home.allStations": "All Stations",
         "home.favorites": "Favorites",
+        "home.genres": "Genres",
+        "home.filterByGenre": "Filter by Genre",
+        "home.clearFilters": "Clear all",
         "common.search": "Search stations...",
         "common.noResults": "No results found",
       };
@@ -66,20 +69,49 @@ vi.mock("@apollo/client", () => ({
   gql: (strings: TemplateStringsArray) => strings[0],
 }));
 
+const mockConfig = {
+  enableSubscriptions: false,
+  favoritesLimit: 50,
+  stationsPageLimit: 50,
+  genres: ["Jazz", "Rock", "Pop"],
+  discord: { inviteUrl: "" },
+  review: { milestones: [] },
+  store: { appleId: "", androidPackage: "" },
+  playlistDaysBack: 6,
+  websiteUrl: "",
+  privacyUrl: "",
+};
+
+const mockStationsData = {
+  getStations: { stations: mockStations, total: 2 },
+};
+
+const mockConfigData = {
+  getAppConfig: mockConfig,
+};
+
 describe("HomePage", () => {
   beforeEach(() => {
     localStorage.clear();
-    mockUseQuery.mockReturnValue({
-      data: { getStations: { stations: mockStations, total: 2 }, getAppConfig: null },
-      loading: false,
-      fetchMore: vi.fn(),
+    mockUseQuery.mockImplementation((query: unknown) => {
+      if (typeof query === "string" && query.includes("getAppConfig")) {
+        return {
+          data: mockConfigData,
+          loading: false,
+        };
+      }
+      return {
+        data: mockStationsData,
+        loading: false,
+        fetchMore: vi.fn(),
+      };
     });
   });
 
-  async function renderPage() {
+  async function renderPage(initialEntries = ["/"]) {
     const { default: HomePage } = await import("@/pages/HomePage");
     return render(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={initialEntries}>
         <HomePage />
       </MemoryRouter>,
     );
@@ -89,6 +121,7 @@ describe("HomePage", () => {
     await renderPage();
     expect(screen.getByText("All Stations")).toBeInTheDocument();
     expect(screen.getByText("Favorites")).toBeInTheDocument();
+    expect(screen.getByText("Genres")).toBeInTheDocument();
   });
 
   it("renders search bar in all stations tab", async () => {
@@ -109,6 +142,29 @@ describe("HomePage", () => {
     await user.click(favTab);
     // Search bar should be hidden when on favorites tab
     expect(screen.queryByPlaceholderText("Search stations...")).not.toBeInTheDocument();
+  });
+
+  it("renders genres tab with filter chips when navigated to /genres", async () => {
+    await renderPage(["/genres"]);
+    expect(screen.getByText("Filter by Genre")).toBeInTheDocument();
+    expect(screen.getAllByText("Jazz").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Rock").length).toBeGreaterThan(0);
+    expect(screen.getByText("Pop")).toBeInTheDocument();
+  });
+
+  it("selects genre chips and shows count and clear button", async () => {
+    const user = userEvent.setup();
+    await renderPage(["/genres"]);
+
+    const popChip = screen.getByRole("button", { name: "Pop" });
+    await user.click(popChip);
+
+    expect(screen.getByText("Clear all")).toBeInTheDocument();
+  });
+
+  it("loads selected genres from url search params", async () => {
+    await renderPage(["/genres?genres=Jazz,Rock"]);
+    expect(screen.getByText("Clear all")).toBeInTheDocument();
   });
 
   it("shows loading state", async () => {

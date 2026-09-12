@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_STATIONS = gql`
-  query GetItems($query: String!, $offset: Int!, $limit: Int!) {
-    getStations(query: $query, limit: $limit, offset: $offset) {
+  query GetItems($query: String!, $offset: Int!, $limit: Int!, $genres: [String!]) {
+    getStations(query: $query, limit: $limit, offset: $offset, genres: $genres) {
       stations {
         id
         playlistAvailable
@@ -113,6 +113,7 @@ export const GET_APP_CONFIG = gql`
       playlistDaysBack
       websiteUrl
       privacyUrl
+      genres
     }
   }
 `;

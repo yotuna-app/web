@@ -36,7 +36,10 @@
     "title": "रेडियो स्टेशन",
     "errorLoadingStations": "स्टेशन लोड करने में त्रुटि",
     "favorites": "पसंदीदा",
-    "allStations": "सभी स्टेशन"
+    "allStations": "सभी स्टेशन",
+    "genres": "शैलियां",
+    "filterByGenre": "शैली के अनुसार फ़िल्टर करें",
+    "clearFilters": "सभी साफ़ करें"
   },
   "station": {
     "noPlaylist": "कोई प्लेलिस्ट उपलब्ध नहीं है",
@@ -55,7 +58,8 @@
     "next": "अगला",
     "copyTrack": "ट्रैक जानकारी कॉपी करें",
     "backToStations": "स्टेशनों पर वापस",
-    "backToFavorites": "पसंदीदा पर वापस"
+    "backToFavorites": "पसंदीदा पर वापस",
+    "backToGenres": "शैलियों पर वापस"
   },
   "settings": {
     "title": "सेटिंग्स",

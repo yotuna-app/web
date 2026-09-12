@@ -36,6 +36,14 @@ export default function App() {
               }
             />
             <Route
+              path="genres"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <HomePage />
+                </Suspense>
+              }
+            />
+            <Route
               path="station/:id"
               element={
                 <Suspense fallback={<PageLoader />}>
