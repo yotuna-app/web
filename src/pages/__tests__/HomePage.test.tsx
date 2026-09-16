@@ -144,6 +144,20 @@ describe("HomePage", () => {
     expect(screen.queryByPlaceholderText("Search stations...")).not.toBeInTheDocument();
   });
 
+  it("loads search query from url param 'q'", async () => {
+    await renderPage(["/?q=rock"]);
+    const input = screen.getByPlaceholderText("Search stations...") as HTMLInputElement;
+    expect(input.value).toBe("rock");
+  });
+
+  it("updates url param 'q' when searching", async () => {
+    const user = userEvent.setup();
+    await renderPage();
+    const input = screen.getByPlaceholderText("Search stations...");
+    await user.type(input, "jazz");
+    expect((input as HTMLInputElement).value).toBe("jazz");
+  });
+
   it("renders genres tab with filter chips when navigated to /genres", async () => {
     await renderPage(["/genres"]);
     expect(screen.getByText("Filter by Genre")).toBeInTheDocument();

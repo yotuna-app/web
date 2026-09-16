@@ -23,10 +23,16 @@ export default function HomePage() {
   const { getFavoriteIds, getFavoritesCount } = useFavoritesStore();
   const { currentStationId } = useAudioStore();
 
-  const [search, setSearch] = useState("");
+  const queryParam = searchParams.get("q") ?? "";
+  const [search, setSearch] = useState(queryParam);
   const tab: Tab = location.pathname === "/favorites" ? "favorites" : location.pathname === "/genres" ? "genres" : "all";
   const [offset, setOffset] = useState(0);
   const loadMoreRef = useRef<HTMLDivElement>(null);
+
+  // Sync internal search state when URL searchParams change (e.g., navigating back)
+  useEffect(() => {
+    setSearch(queryParam);
+  }, [queryParam]);
 
   // Read selected genres from searchParams (e.g. ?genres=Pop,Rock)
   const selectedGenres = useMemo(() => {
@@ -83,13 +89,27 @@ export default function HomePage() {
     (value: string) => {
       setSearch(value);
       setOffset(0);
+
+      setSearchParams(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          if (value.trim()) {
+            next.set("q", value);
+          } else {
+            next.delete("q");
+          }
+          return next;
+        },
+        { replace: true },
+      );
+
       if (value.length > 0) {
         tracker.trackEvent(AnalyticsEvents.SEARCH_PERFORMED, { query: value });
       } else {
         tracker.trackEvent(AnalyticsEvents.SEARCH_CLEARED);
       }
     },
-    [],
+    [setSearchParams],
   );
 
   const handleToggleGenre = useCallback(
@@ -98,18 +118,32 @@ export default function HomePage() {
       const isSelected = selectedGenres.includes(genre);
       const nextGenres = isSelected ? selectedGenres.filter((g) => g !== genre) : [...selectedGenres, genre];
 
-      if (nextGenres.length === 0) {
-        setSearchParams({}, { replace: true });
-      } else {
-        setSearchParams({ genres: nextGenres.join(",") }, { replace: true });
-      }
+      setSearchParams(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          if (nextGenres.length === 0) {
+            next.delete("genres");
+          } else {
+            next.set("genres", nextGenres.join(","));
+          }
+          return next;
+        },
+        { replace: true },
+      );
     },
     [selectedGenres, setSearchParams],
   );
 
   const handleClearGenres = useCallback(() => {
     setOffset(0);
-    setSearchParams({}, { replace: true });
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.delete("genres");
+        return next;
+      },
+      { replace: true },
+    );
   }, [setSearchParams]);
 
   const handleLoadMore = useCallback(() => {

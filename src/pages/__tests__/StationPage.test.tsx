@@ -163,4 +163,37 @@ describe("StationPage", () => {
     );
     expect(screen.getByText("Back to genres")).toBeInTheDocument();
   });
+
+  it("navigates back to home with previous search query params", async () => {
+    const user = (await import("@testing-library/user-event")).default.setup();
+    const { default: StationPage } = await import("@/pages/StationPage");
+    const { useLocation } = await import("react-router-dom");
+
+    function LocationDisplay() {
+      const location = useLocation();
+      return <div>Current path: {location.pathname + location.search}</div>;
+    }
+
+    render(
+      <MemoryRouter initialEntries={[{ pathname: "/station/station-1", state: { from: "all", search: "q=jazz" } }]}>
+        <Routes>
+          <Route
+            path="/station/:id"
+            element={
+              <>
+                <LocationDisplay />
+                <StationPage />
+              </>
+            }
+          />
+          <Route path="/" element={<LocationDisplay />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+
+    const backButton = screen.getByRole("button", { name: "Back to Stations" });
+    await user.click(backButton);
+
+    expect(screen.getByText("Current path: /?q=jazz")).toBeInTheDocument();
+  });
 });
