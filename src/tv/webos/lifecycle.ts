@@ -7,19 +7,37 @@ const BACK_KEY = 461; // webOS back button keyCode
 
 /**
  * Register a global back button handler.
+ * Supports webOS remote Back button (keyCode 461), key name ("Back", "GoBack"),
+ * emulator/simulator Escape, and popstate navigation.
  * Returns a cleanup function.
  */
 export function registerBackHandler(onBack: () => void): () => void {
   function handleKeyDown(e: KeyboardEvent) {
-    if (e.keyCode === BACK_KEY) {
+    if (
+      e.keyCode === BACK_KEY ||
+      e.key === "Back" ||
+      e.key === "GoBack" ||
+      e.key === "Escape" ||
+      e.keyCode === 27
+    ) {
       e.preventDefault();
       e.stopPropagation();
       onBack();
     }
   }
 
+  function handlePopState(e: PopStateEvent) {
+    e.preventDefault();
+    onBack();
+  }
+
   document.addEventListener("keydown", handleKeyDown, true);
-  return () => document.removeEventListener("keydown", handleKeyDown, true);
+  window.addEventListener("popstate", handlePopState);
+
+  return () => {
+    document.removeEventListener("keydown", handleKeyDown, true);
+    window.removeEventListener("popstate", handlePopState);
+  };
 }
 
 /**

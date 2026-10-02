@@ -59,7 +59,8 @@
     "copyTrack": "نسخ معلومات المسار",
     "backToStations": "العودة إلى المحطات",
     "backToFavorites": "العودة إلى المفضلة",
-    "backToGenres": "العودة إلى الأنواع"
+    "backToGenres": "العودة إلى الأنواع",
+    "playbackError": "تعذر تشغيل المحطة. قد يكون البث غير متاح."
   },
   "settings": {
     "title": "الإعدادات",

@@ -59,7 +59,8 @@
     "copyTrack": "复制曲目信息",
     "backToStations": "返回电台",
     "backToFavorites": "返回收藏夹",
-    "backToGenres": "返回流派"
+    "backToGenres": "返回流派",
+    "playbackError": "无法播放电台。流可能不可用。"
   },
   "settings": {
     "title": "设置",

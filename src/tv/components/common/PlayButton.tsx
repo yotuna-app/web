@@ -13,19 +13,22 @@ export default function PlayButton({ stationId, streamUrl, stationName }: PlayBu
   const isCurrentStation = currentStationId === stationId;
   const isActive = isCurrentStation && isPlaying;
 
+  const handleToggle = () => {
+    if (isCurrentStation && isPlaying) {
+      pauseAudio();
+    } else if (streamUrl) {
+      playAudio(streamUrl, stationId, stationName);
+    }
+  };
+
   const { ref, focused } = useFocusable({
-    onEnterPress: () => {
-      if (isCurrentStation && isPlaying) {
-        pauseAudio();
-      } else if (streamUrl) {
-        playAudio(streamUrl, stationId, stationName);
-      }
-    },
+    onEnterPress: handleToggle,
   });
 
   return (
     <div
       ref={ref}
+      onClick={handleToggle}
       className={`flex h-14 w-14 items-center justify-center rounded-full tv-btn-focus cursor-pointer ${
         isActive ? "bg-primary-600" : "bg-gray-700"
       } ${focused ? "focused" : ""}`}

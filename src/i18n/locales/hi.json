@@ -59,7 +59,8 @@
     "copyTrack": "ट्रैक जानकारी कॉपी करें",
     "backToStations": "स्टेशनों पर वापस",
     "backToFavorites": "पसंदीदा पर वापस",
-    "backToGenres": "शैलियों पर वापस"
+    "backToGenres": "शैलियों पर वापस",
+    "playbackError": "स्टेशन नहीं चलाया जा सका। स्ट्रीम अनुपलब्ध हो सकती है।"
   },
   "settings": {
     "title": "सेटिंग्स",

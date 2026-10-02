@@ -76,4 +76,22 @@ describe("audioStore", () => {
     expect(state.currentStationId).toBe("station-2");
     expect(state.currentStationName).toBe("Radio 2");
   });
+
+  it("handles buffer timeout and sets playbackError", () => {
+    vi.useFakeTimers();
+    useAudioStore.getState().playAudio("http://unresponsive-stream.url", "hung-station", "Hung Radio");
+    expect(useAudioStore.getState().isBuffering).toBe(true);
+
+    // Fast-forward 10 seconds
+    vi.advanceTimersByTime(10000);
+
+    const state = useAudioStore.getState();
+    expect(state.isBuffering).toBe(false);
+    expect(state.isPlaying).toBe(false);
+    expect(state.playbackError).toContain("timed out");
+
+    useAudioStore.getState().clearPlaybackError();
+    expect(useAudioStore.getState().playbackError).toBeNull();
+    vi.useRealTimers();
+  });
 });

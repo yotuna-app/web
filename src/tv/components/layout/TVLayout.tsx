@@ -28,6 +28,7 @@ function NavItem({ icon, label, isActive, onPress, focusKey: preferredFocusKey }
   return (
     <div
       ref={ref}
+      onClick={onPress}
       className={`flex items-center gap-3 rounded-tv-md px-tv-3 py-tv-2 tv-btn-focus cursor-pointer ${
         focused ? "focused" : ""
       } ${isActive ? "bg-primary-600 text-white" : "text-gray-400 hover:text-white"}`}

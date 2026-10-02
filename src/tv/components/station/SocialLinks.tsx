@@ -22,6 +22,7 @@ function LinkButton({ label, icon, onPress }: LinkButtonProps) {
   return (
     <div
       ref={ref}
+      onClick={onPress}
       className={`inline-flex items-center gap-2 rounded-tv-md bg-gray-800 px-tv-3 py-tv-1 tv-btn-focus cursor-pointer ${focused ? "focused" : ""}`}
     >
       {icon}

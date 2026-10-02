@@ -11,16 +11,18 @@ export default function AudioPlayerBar() {
     focusable: !!currentStationId,
   });
 
+  const handleTogglePlay = () => {
+    if (isPlaying) {
+      pauseAudio();
+    } else if (currentStreamUrl) {
+      playAudio(currentStreamUrl, currentStationId!, currentStationName ?? undefined);
+    }
+  };
+
   const { ref: playRef, focused: playFocused } = useFocusable({
     focusKey: "audio-play",
     focusable: !!currentStationId,
-    onEnterPress: () => {
-      if (isPlaying) {
-        pauseAudio();
-      } else if (currentStreamUrl) {
-        playAudio(currentStreamUrl, currentStationId!, currentStationName ?? undefined);
-      }
-    },
+    onEnterPress: handleTogglePlay,
   });
 
   const { ref: stopRef, focused: stopFocused } = useFocusable({
@@ -53,6 +55,7 @@ export default function AudioPlayerBar() {
           {/* Play / Pause */}
           <div
             ref={playRef}
+            onClick={handleTogglePlay}
             className={`flex h-14 w-14 items-center justify-center rounded-full bg-primary-600 tv-btn-focus cursor-pointer ${playFocused ? "focused" : ""}`}
           >
             {isPlaying ? <Pause className="h-7 w-7 text-white" /> : <Play className="h-7 w-7 text-white" />}
@@ -61,6 +64,7 @@ export default function AudioPlayerBar() {
           {/* Stop */}
           <div
             ref={stopRef}
+            onClick={stopAudio}
             className={`flex h-12 w-12 items-center justify-center rounded-full tv-btn-focus cursor-pointer ${stopFocused ? "focused" : ""}`}
           >
             <Square className="h-6 w-6 text-gray-400" />

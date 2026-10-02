@@ -28,6 +28,7 @@ function DayButton({ date, label, isActive, onSelect }: DayButtonProps) {
   return (
     <div
       ref={ref}
+      onClick={() => onSelect(date)}
       data-active={isActive}
       className={`shrink-0 rounded-tv-md px-tv-3 py-tv-2 tv-btn-focus cursor-pointer ${
         isActive

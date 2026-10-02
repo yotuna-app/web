@@ -59,7 +59,8 @@
     "copyTrack": "Copy track info",
     "backToStations": "Back to stations",
     "backToFavorites": "Back to favorites",
-    "backToGenres": "Back to genres"
+    "backToGenres": "Back to genres",
+    "playbackError": "Unable to play station. The stream may be unavailable."
   },
   "settings": {
     "title": "Settings",

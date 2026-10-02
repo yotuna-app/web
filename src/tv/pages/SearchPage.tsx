@@ -44,6 +44,7 @@ function TVSearchInput({ value, onChange, placeholder, autoFocus }: {
   return (
     <div
       ref={ref}
+      onClick={() => inputRef.current?.focus()}
       className={`flex items-center gap-3 rounded-tv-lg border-2 bg-gray-900 px-tv-3 py-tv-2 tv-btn-focus cursor-pointer ${
         focused ? "focused border-primary-500" : "border-gray-700"
       }`}

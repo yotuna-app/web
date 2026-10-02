@@ -59,7 +59,8 @@
     "copyTrack": "Kopiuj informacje o utworze",
     "backToStations": "Powrót do stacji",
     "backToFavorites": "Powrót do ulubionych",
-    "backToGenres": "Powrót do gatunków"
+    "backToGenres": "Powrót do gatunków",
+    "playbackError": "Nie można odtworzyć stacji. Strumień może być niedostępny."
   },
   "settings": {
     "title": "Ustawienia",

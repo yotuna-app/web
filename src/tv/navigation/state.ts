@@ -24,6 +24,9 @@ export function createInitialState(): NavigationHistory {
 }
 
 export function navigateTo(history: NavigationHistory, page: TVPage, params?: Record<string, string>): NavigationHistory {
+  if (history.current.page === page && JSON.stringify(history.current.params ?? null) === JSON.stringify(params ?? null)) {
+    return history;
+  }
   return {
     stack: [...history.stack, history.current],
     current: { page, params },

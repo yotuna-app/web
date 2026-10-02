@@ -59,7 +59,8 @@
     "copyTrack": "Copier les informations de la piste",
     "backToStations": "Retour aux stations",
     "backToFavorites": "Retour aux favoris",
-    "backToGenres": "Retour aux genres"
+    "backToGenres": "Retour aux genres",
+    "playbackError": "Impossible de lire la station. Le flux est peut-être indisponible."
   },
   "settings": {
     "title": "Paramètres",

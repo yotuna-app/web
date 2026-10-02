@@ -27,6 +27,7 @@ export default function StationCard({ station, onSelect }: StationCardProps) {
   return (
     <div
       ref={ref}
+      onClick={() => onSelect(station)}
       className={`flex items-center gap-tv-3 rounded-tv-lg border border-gray-800 bg-gray-900 p-tv-3 tv-card-focus cursor-pointer ${focused ? "focused" : ""}`}
     >
       <StationImage imageUrl={station.imageUrl} name={station.name} size="md" />

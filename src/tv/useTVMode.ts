@@ -5,6 +5,14 @@ import { preventScreenSaver } from "./webos/lifecycle";
 export function isTVEnvironment(): boolean {
   if (typeof window === "undefined") return false;
 
+  // 0. Build-time TV flag or packaged webOS file protocol
+  if (import.meta.env.VITE_TV_BUILD) {
+    return true;
+  }
+  if (window.location.protocol === "file:") {
+    return true;
+  }
+
   // 1. Explicit query parameter override (e.g. ?tv=1 or ?mode=tv for testing & emulator)
   const params = new URLSearchParams(window.location.search);
   if (params.get("tv") === "1" || params.get("mode") === "tv") {

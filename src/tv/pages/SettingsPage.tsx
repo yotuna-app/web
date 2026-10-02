@@ -17,6 +17,7 @@ function BackButton({ onBack, label }: { onBack: () => void; label: string }) {
   return (
     <div
       ref={ref}
+      onClick={onBack}
       className={`mb-tv-4 flex w-fit items-center gap-3 rounded-tv-md px-tv-3 py-tv-1 text-tv-xs font-medium text-gray-400 tv-btn-focus cursor-pointer ${focused ? "focused" : ""}`}
     >
       <ArrowLeft className="h-6 w-6" />
@@ -38,6 +39,7 @@ function LanguageSelector({ currentLang, onChangeLang, hint }: {
   return (
     <div
       ref={ref}
+      onClick={onChangeLang}
       className={`inline-flex rounded-tv-md bg-gray-800 px-tv-4 py-tv-2 tv-btn-focus cursor-pointer ${focused ? "focused" : ""}`}
     >
       <span className="text-tv-sm font-medium text-gray-300">{currentLang.toUpperCase()}</span>

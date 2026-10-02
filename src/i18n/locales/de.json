@@ -59,7 +59,8 @@
     "copyTrack": "Titelinformationen kopieren",
     "backToStations": "Zurück zu den Sendern",
     "backToFavorites": "Zurück zu den Favoriten",
-    "backToGenres": "Zurück zu den Genres"
+    "backToGenres": "Zurück zu den Genres",
+    "playbackError": "Sender kann nicht abgespielt werden. Der Stream ist möglicherweise nicht verfügbar."
   },
   "settings": {
     "title": "Einstellungen",

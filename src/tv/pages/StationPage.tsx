@@ -30,6 +30,7 @@ function BackButton({ onBack, label }: { onBack: () => void; label: string }) {
   return (
     <div
       ref={ref}
+      onClick={onBack}
       className={`mb-tv-3 flex w-fit items-center gap-3 rounded-tv-md px-tv-3 py-tv-1 text-tv-xs font-medium text-gray-400 tv-btn-focus cursor-pointer ${focused ? "focused" : ""}`}
     >
       <ArrowLeft className="h-6 w-6" />

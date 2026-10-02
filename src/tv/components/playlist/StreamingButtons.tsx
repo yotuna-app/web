@@ -16,16 +16,19 @@ interface StreamingService {
 }
 
 function ServiceButton({ service }: { service: StreamingService }) {
+  const handleClick = () => {
+    tracker.trackEvent(AnalyticsEvents.STREAMING_LINK_CLICKED, { service: service.key, trackId: service.trackId });
+    window.open(service.url(service.trackId!), "_blank");
+  };
+
   const { ref, focused } = useFocusable({
-    onEnterPress: () => {
-      tracker.trackEvent(AnalyticsEvents.STREAMING_LINK_CLICKED, { service: service.key, trackId: service.trackId });
-      window.open(service.url(service.trackId!), "_blank");
-    },
+    onEnterPress: handleClick,
   });
 
   return (
     <div
       ref={ref}
+      onClick={handleClick}
       style={{ backgroundColor: service.color }}
       className={`rounded-full px-4 py-2 tv-btn-focus cursor-pointer ${focused ? "focused" : ""}`}
     >
