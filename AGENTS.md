@@ -31,6 +31,15 @@ npm test                     # vitest run
 
 # Run tests in watch mode
 npm run test:watch           # vitest
+
+# Build TV version (standalone / webOS target with relative paths)
+npm run build:tv
+
+# Package webOS .ipk for LG TV
+npm run package:tv
+
+# Launch and test on webOS TV 24 Simulator
+npm run sim
 ```
 
 ## Deployment

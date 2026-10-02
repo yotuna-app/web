@@ -5,6 +5,8 @@ import { apolloClient } from "@/services/apolloClient";
 import Layout from "@/components/layout/Layout";
 import PageLoader from "@/components/common/PageLoader";
 import GDPRModal from "@/components/common/GDPRModal";
+import { useTVMode } from "@/tv/useTVMode";
+import TVApp from "@/tv/TVApp";
 
 const HomePage = lazy(() => import("@/pages/HomePage"));
 const StationPage = lazy(() => import("@/pages/StationPage"));
@@ -14,6 +16,12 @@ const PrivacyPage = lazy(() => import("@/pages/PrivacyPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
 export default function App() {
+  const isTV = useTVMode();
+
+  if (isTV) {
+    return <TVApp />;
+  }
+
   return (
     <ApolloProvider client={apolloClient}>
       <BrowserRouter basename="/">

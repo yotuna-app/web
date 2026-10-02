@@ -11,8 +11,9 @@ import hi from "./locales/hi.json";
 import ja from "./locales/ja.json";
 import fr from "./locales/fr.json";
 import de from "./locales/de.json";
+import ru from "./locales/ru.json";
 
-export const SUPPORTED_LANGUAGES = ["en", "pl", "de", "fr", "es", "ar", "zh", "hi", "ja"] as const;
+export const SUPPORTED_LANGUAGES = ["en", "pl", "de", "fr", "es", "ar", "zh", "hi", "ja", "ru"] as const;
 
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
@@ -28,6 +29,7 @@ const resources = {
   ja: { translation: ja },
   fr: { translation: fr },
   de: { translation: de },
+  ru: { translation: ru },
 };
 
 i18n

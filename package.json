@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc -b && vite build",
+    "build:tv": "VITE_TV_BUILD=1 tsc -b && VITE_TV_BUILD=1 vite build",
+    "package:tv": "npm run build:tv && mkdir -p dist-lg && ares-package dist -o dist-lg",
+    "sim": "npm run build:tv && ares-launch -s 24 -sp /Users/zenedith/git/yotuna-tv/webOS_TV_24_Simulator_1.4.1 dist",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
@@ -13,6 +16,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.13.4",
+    "@noriginmedia/norigin-spatial-navigation": "^3.3.0",
     "@tailwindcss/vite": "^4.2.0",
     "date-fns": "^4.1.0",
     "graphql": "^16.10.0",
