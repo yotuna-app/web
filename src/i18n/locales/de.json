@@ -60,7 +60,8 @@
     "backToStations": "Zurück zu den Sendern",
     "backToFavorites": "Zurück zu den Favoriten",
     "backToGenres": "Zurück zu den Genres",
-    "playbackError": "Sender kann nicht abgespielt werden. Der Stream ist möglicherweise nicht verfügbar."
+    "playbackError": "Sender kann nicht abgespielt werden. Der Stream ist möglicherweise nicht verfügbar.",
+    "todayPlaylist": "Heutige Playlist"
   },
   "settings": {
     "title": "Einstellungen",

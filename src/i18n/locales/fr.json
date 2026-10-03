@@ -60,7 +60,8 @@
     "backToStations": "Retour aux stations",
     "backToFavorites": "Retour aux favoris",
     "backToGenres": "Retour aux genres",
-    "playbackError": "Impossible de lire la station. Le flux est peut-être indisponible."
+    "playbackError": "Impossible de lire la station. Le flux est peut-être indisponible.",
+    "todayPlaylist": "Playlist d'aujourd'hui"
   },
   "settings": {
     "title": "Paramètres",

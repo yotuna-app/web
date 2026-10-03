@@ -60,7 +60,8 @@
     "backToStations": "局一覧に戻る",
     "backToFavorites": "お気に入りに戻る",
     "backToGenres": "ジャンル一覧に戻る",
-    "playbackError": "ステーションを再生できません。配信が利用できない可能性があります。"
+    "playbackError": "ステーションを再生できません。配信が利用できない可能性があります。",
+    "todayPlaylist": "今日のプレイリスト"
   },
   "settings": {
     "title": "設定",

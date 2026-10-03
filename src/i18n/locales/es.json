@@ -60,7 +60,8 @@
     "backToStations": "Volver a las estaciones",
     "backToFavorites": "Volver a favoritos",
     "backToGenres": "Volver a géneros",
-    "playbackError": "No se puede reproducir la emisora. La transmisión puede no estar disponible."
+    "playbackError": "No se puede reproducir la emisora. La transmisión puede no estar disponible.",
+    "todayPlaylist": "Lista de reproducción de hoy"
   },
   "settings": {
     "title": "Configuración",

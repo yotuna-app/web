@@ -29,7 +29,7 @@ export default function StationList({ stations, loading, emptyMessage, onSelectS
 
   return (
     <FocusContext.Provider value={focusKey}>
-      <div ref={ref} className="grid grid-cols-2 gap-tv-3">
+      <div ref={ref} className="grid grid-cols-2 gap-tv-3 p-tv-1">
         {stations.map((station) => (
           <StationCard key={station.id} station={station} onSelect={onSelectStation} />
         ))}

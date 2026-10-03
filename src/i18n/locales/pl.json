@@ -60,7 +60,8 @@
     "backToStations": "Powrót do stacji",
     "backToFavorites": "Powrót do ulubionych",
     "backToGenres": "Powrót do gatunków",
-    "playbackError": "Nie można odtworzyć stacji. Strumień może być niedostępny."
+    "playbackError": "Nie można odtworzyć stacji. Strumień może być niedostępny.",
+    "todayPlaylist": "Dzisiejsza playlista"
   },
   "settings": {
     "title": "Ustawienia",

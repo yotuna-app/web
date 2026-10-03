@@ -60,7 +60,8 @@
     "backToStations": "العودة إلى المحطات",
     "backToFavorites": "العودة إلى المفضلة",
     "backToGenres": "العودة إلى الأنواع",
-    "playbackError": "تعذر تشغيل المحطة. قد يكون البث غير متاح."
+    "playbackError": "تعذر تشغيل المحطة. قد يكون البث غير متاح.",
+    "todayPlaylist": "قائمة تشغيل اليوم"
   },
   "settings": {
     "title": "الإعدادات",

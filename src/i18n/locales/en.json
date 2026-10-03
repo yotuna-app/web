@@ -60,7 +60,8 @@
     "backToStations": "Back to stations",
     "backToFavorites": "Back to favorites",
     "backToGenres": "Back to genres",
-    "playbackError": "Unable to play station. The stream may be unavailable."
+    "playbackError": "Unable to play station. The stream may be unavailable.",
+    "todayPlaylist": "Today's playlist"
   },
   "settings": {
     "title": "Settings",

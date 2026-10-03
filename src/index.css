@@ -24,6 +24,39 @@
   --color-accent-700: #ffa000;
   --color-accent-800: #ff8f00;
   --color-accent-900: #ff6f00;
+
+  /* TV typography */
+  --text-tv-xs: 20px;
+  --text-tv-xs--line-height: 28px;
+  --text-tv-sm: 24px;
+  --text-tv-sm--line-height: 32px;
+  --text-tv-base: 28px;
+  --text-tv-base--line-height: 36px;
+  --text-tv-lg: 32px;
+  --text-tv-lg--line-height: 40px;
+  --text-tv-xl: 36px;
+  --text-tv-xl--line-height: 44px;
+  --text-tv-2xl: 42px;
+  --text-tv-2xl--line-height: 52px;
+  --text-tv-3xl: 48px;
+  --text-tv-3xl--line-height: 56px;
+  --text-tv-4xl: 56px;
+  --text-tv-4xl--line-height: 64px;
+
+  /* TV spacing */
+  --spacing-tv-1: 8px;
+  --spacing-tv-2: 16px;
+  --spacing-tv-3: 24px;
+  --spacing-tv-4: 32px;
+  --spacing-tv-5: 40px;
+  --spacing-tv-6: 48px;
+  --spacing-tv-8: 64px;
+
+  /* TV border radius */
+  --radius-tv-sm: 8px;
+  --radius-tv-md: 12px;
+  --radius-tv-lg: 16px;
+  --radius-tv-xl: 24px;
 }
 
 /* Scrollbar styling */

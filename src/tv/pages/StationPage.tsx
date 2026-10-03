@@ -142,11 +142,11 @@ export default function StationPage({ stationName, onBack }: StationPageProps) {
                 <div className="border-b border-gray-800 p-tv-3">
                   <div className="flex items-center gap-3">
                     <ListMusic className="h-7 w-7 text-gray-400" />
-                    <h2 className="text-tv-lg font-semibold text-white">{t("station.todayPlaylist")}</h2>
+                    <h2 className="text-tv-lg font-semibold text-white">{t("station.todayPlaylist", t("station.playlist"))}</h2>
                   </div>
                 </div>
 
-                <div className="flex-1 overflow-y-auto">
+                <div className="flex-1 overflow-y-auto p-tv-3">
                   {playlistLoading ? (
                     <PageLoader />
                   ) : tracks.length === 0 ? (
@@ -154,7 +154,7 @@ export default function StationPage({ stationName, onBack }: StationPageProps) {
                       <p className="text-tv-sm text-gray-500">{t("station.noPlaylistData")}</p>
                     </div>
                   ) : (
-                    <div>
+                    <div className="flex flex-col gap-2">
                       {tracks.map((track, index) => (
                         <PlaylistItem key={`${track.startedAt}-${index}`} track={track} isEven={index % 2 === 0} />
                       ))}

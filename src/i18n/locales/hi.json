@@ -60,7 +60,8 @@
     "backToStations": "स्टेशनों पर वापस",
     "backToFavorites": "पसंदीदा पर वापस",
     "backToGenres": "शैलियों पर वापस",
-    "playbackError": "स्टेशन नहीं चलाया जा सका। स्ट्रीम अनुपलब्ध हो सकती है।"
+    "playbackError": "स्टेशन नहीं चलाया जा सका। स्ट्रीम अनुपलब्ध हो सकती है।",
+    "todayPlaylist": "आज की प्लेलिस्ट"
   },
   "settings": {
     "title": "सेटिंग्स",
