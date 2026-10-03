@@ -75,8 +75,8 @@ export function useTVMode() {
     // Apply tv-mode class to body
     document.body.classList.add("tv-mode");
 
-    // Initialize spatial navigation
-    const showDebug = import.meta.env.DEV && !window.location.search.includes("nodebug");
+    // Initialize spatial navigation (disabled by default; visualDebug renders red bounding boxes)
+    const showDebug = window.location.search.includes("debugNav");
     init({
       debug: showDebug,
       visualDebug: showDebug,
