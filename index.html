@@ -2,16 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Yotuna - Discover radio stations worldwide, track live playlists, and find songs on your favorite streaming services." />
-    <meta name="theme-color" content="#007AFF" />
+    <meta name="theme-color" content="#030712" />
     <title>Yotuna - Radio Station Discovery</title>
-    <script type="module" crossorigin src="/assets/index-Dhp74Puz.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-C8GhmNvS.css">
+    <script type="text/javascript">
+      // SPA redirect restore for GitHub Pages.
+      // 404.html rewrites deep links to /?/path&query; this restores the real URL
+      // into history so client-side routing (e.g. /station/:id) works on refresh.
+      (function () {
+        var l = window.location;
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-CN49M4Aa.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B_bLEkNj.css">
   </head>
   <body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
-    <div id="root"></div>
+    <div id="root">
+      <div style="display:flex;height:100vh;width:100vw;align-items:center;justify-content:center;background-color:#030712;color:#ffffff;font-family:system-ui,-apple-system,sans-serif;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+          <svg style="width:48px;height:48px;animation:spin 1s linear infinite;color:#3b82f6;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <style>@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }</style>
+            <circle style="opacity:0.25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path style="opacity:0.75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span style="font-size:20px;font-weight:700;letter-spacing:0.05em;color:#f3f4f6;">Yotuna</span>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
