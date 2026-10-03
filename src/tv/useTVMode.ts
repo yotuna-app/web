@@ -31,6 +31,11 @@ export function isTVEnvironment(): boolean {
     return true;
   }
 
+  // 4. Hostname matching LG TV subdomain (e.g. lg.yotuna.mobulum.com)
+  if (window.location.hostname.includes("lg.yotuna")) {
+    return true;
+  }
+
   // 4. LocalStorage preference
   try {
     if (localStorage.getItem("yotuna-tv-mode") === "true") {
