@@ -135,5 +135,11 @@
     "title": "Seite nicht gefunden",
     "message": "Die gesuchte Seite existiert nicht.",
     "goHome": "Zur Startseite"
+  },
+  "appBanner": {
+    "title": "Yotuna",
+    "subtitle": "In der Android-App hören",
+    "open": "Öffnen",
+    "dismiss": "Schließen"
   }
 }

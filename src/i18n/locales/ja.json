@@ -135,5 +135,11 @@
     "title": "ページが見つかりません",
     "message": "お探しのページは存在しません。",
     "goHome": "ホームに戻る"
+  },
+  "appBanner": {
+    "title": "Yotuna",
+    "subtitle": "Androidアプリで聴く",
+    "open": "開く",
+    "dismiss": "閉じる"
   }
 }

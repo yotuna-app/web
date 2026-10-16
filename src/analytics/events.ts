@@ -43,6 +43,11 @@ export const AnalyticsEvents = {
   GDPR_CONSENT_GIVEN: "gdpr_consent_given",
   GDPR_CONSENT_DECLINED: "gdpr_consent_declined",
   GDPR_CONSENT_CHANGE: "gdpr_consent_change",
+
+  // App Banner
+  APP_BANNER_IMPRESSION: "app_banner_impression",
+  APP_BANNER_CLICKED: "app_banner_clicked",
+  APP_BANNER_DISMISSED: "app_banner_dismissed",
 } as const;
 
 export type AnalyticsEvent = (typeof AnalyticsEvents)[keyof typeof AnalyticsEvents];

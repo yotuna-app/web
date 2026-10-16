@@ -135,5 +135,11 @@
     "title": "页面未找到",
     "message": "您要找的页面不存在。",
     "goHome": "返回首页"
+  },
+  "appBanner": {
+    "title": "Yotuna",
+    "subtitle": "在 Android 应用中收听",
+    "open": "打开",
+    "dismiss": "关闭"
   }
 }

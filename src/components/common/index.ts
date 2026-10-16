@@ -4,3 +4,4 @@ export { default as Toast } from "./Toast";
 export { default as GDPRModal } from "./GDPRModal";
 export { default as AudioPlayerBar } from "./AudioPlayerBar";
 export { default as PageLoader } from "./PageLoader";
+export { default as AndroidAppBanner } from "./AndroidAppBanner";
