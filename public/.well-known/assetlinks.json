@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mobulum.yotuna",
+      "sha256_cert_fingerprints": [
+        "E9:B1:F3:3F:57:3A:4D:62:6E:01:84:3F:95:9E:C9:E7:B5:AF:4F:E1:72:7C:A4:EB:10:2E:79:59:E1:E2:36:61"
+      ]
+    }
+  }
+]
