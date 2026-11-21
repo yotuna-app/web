@@ -34,3 +34,7 @@ export function getPlaylistDateRange(date: Date): { from: string; to: string } {
   const to = `${dateStr}T23:59:59`;
   return { from, to };
 }
+
+export function isTodayDate(date: Date): boolean {
+  return date.toLocaleDateString("en-CA") === new Date().toLocaleDateString("en-CA");
+}

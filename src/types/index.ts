@@ -48,6 +48,10 @@ export interface StationPlaylistResponse {
   };
 }
 
+export interface OnNewPlaylistTrackSubscriptionData {
+  onNewPlaylistTrack?: PlaylistTrack | null;
+}
+
 export interface FavoriteStationsResponse {
   getStationsById: {
     stations: Station[];

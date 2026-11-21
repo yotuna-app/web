@@ -1,10 +1,14 @@
-import { ApolloClient, from, HttpLink, InMemoryCache } from "@apollo/client";
+import { ApolloClient, from, HttpLink, InMemoryCache, split } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import { setContext } from "@apollo/client/link/context";
+import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
+import { getMainDefinition } from "@apollo/client/utilities";
+import { createClient } from "graphql-ws";
 import { appSettings } from "@/constants/app";
 import { useDeviceStore } from "@/stores";
 
 const API_HTTP_ENDPOINT = "https://api-yotuna.mobulum.com/graphql";
+const API_WS_ENDPOINT = "wss://api-yotuna.mobulum.com/graphql";
 
 // Error handling link
 const errorLink = onError(({ networkError, graphQLErrors }) => {
@@ -38,6 +42,30 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+// WebSocket link for GraphQL subscriptions
+const wsLink = new GraphQLWsLink(
+  createClient({
+    url: API_WS_ENDPOINT,
+    lazy: true,
+    retryAttempts: Infinity,
+    shouldRetry: () => true,
+    connectionParams: () => ({
+      "x-device-id": useDeviceStore.getState().generateDeviceId(),
+      "x-app-version": appSettings.appVersion,
+    }),
+  }),
+);
+
+// Route subscriptions over WebSocket, queries/mutations over HTTP
+const splitLink = split(
+  ({ query }) => {
+    const definition = getMainDefinition(query);
+    return definition.kind === "OperationDefinition" && definition.operation === "subscription";
+  },
+  wsLink,
+  authLink.concat(httpLink),
+);
+
 // Apollo cache with pagination merge policies
 const cache = new InMemoryCache({
   typePolicies: {
@@ -61,7 +89,7 @@ const cache = new InMemoryCache({
 });
 
 export const apolloClient = new ApolloClient({
-  link: from([errorLink, authLink.concat(httpLink)]),
+  link: from([errorLink, splitLink]),
   cache,
   defaultOptions: {
     watchQuery: {

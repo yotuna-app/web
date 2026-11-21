@@ -63,6 +63,7 @@ const mockTracks = [
 ];
 
 const mockUseQuery = vi.fn();
+const mockSubscribeToMore = vi.fn(() => vi.fn());
 
 vi.mock("@apollo/client", () => ({
   useQuery: (...args: unknown[]) => mockUseQuery(...args),
@@ -72,12 +73,14 @@ vi.mock("@apollo/client", () => ({
 describe("StationPage", () => {
   beforeEach(() => {
     localStorage.clear();
+    mockSubscribeToMore.mockClear();
     mockUseQuery.mockImplementation((_query: unknown, options?: { variables?: { stationId?: string } }) => {
       if (options?.variables?.stationId) {
         // Playlist query
         return {
-          data: { getStationPlaylist: { entries: mockTracks } },
+          data: { getStationPlaylist: { entries: mockTracks, total: mockTracks.length } },
           loading: false,
+          subscribeToMore: mockSubscribeToMore,
         };
       }
       // Station query
@@ -118,6 +121,16 @@ describe("StationPage", () => {
   it("renders playlist section", async () => {
     await renderPage();
     expect(screen.getByText("Playlist")).toBeInTheDocument();
+  });
+
+  it("subscribes to live playlist updates when viewing today", async () => {
+    await renderPage();
+    expect(mockSubscribeToMore).toHaveBeenCalledWith(
+      expect.objectContaining({
+        variables: { stationId: "station-1" },
+        updateQuery: expect.any(Function),
+      }),
+    );
   });
 
   it("shows station not found when no station data", async () => {

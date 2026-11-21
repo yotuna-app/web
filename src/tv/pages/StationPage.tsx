@@ -3,9 +3,10 @@ import { useTranslation } from "react-i18next";
 import { useQuery } from "@apollo/client";
 import { useFocusable, FocusContext } from "@noriginmedia/norigin-spatial-navigation";
 import { ArrowLeft, ListMusic } from "lucide-react";
-import { GET_STATIONS, GET_STATION_PLAYLIST } from "@/graphql";
+import { GET_STATIONS, GET_STATION_PLAYLIST, ON_NEW_PLAYLIST_TRACK } from "@/graphql";
 import { tracker, AnalyticsEvents } from "@/analytics";
 import { getPlaylistDateRange } from "@/utils/dates";
+import { mergePlaylistTrack } from "@/utils/playlist";
 import StationImage from "../components/station/StationImage";
 import SocialLinks from "../components/station/SocialLinks";
 import PlayButton from "../components/common/PlayButton";
@@ -13,7 +14,7 @@ import FavoriteButton from "../components/station/FavoriteButton";
 import PageLoader from "../components/common/PageLoader";
 import PlaylistItem from "../components/playlist/PlaylistItem";
 import type { TVPage } from "../navigation";
-import type { StationsResponse, StationPlaylistResponse } from "@/types";
+import type { OnNewPlaylistTrackSubscriptionData, StationsResponse, StationPlaylistResponse } from "@/types";
 
 interface StationPageProps {
   stationName: string;
@@ -69,11 +70,31 @@ export default function StationPage({ stationName, onBack }: StationPageProps) {
 
   const { from, to } = useMemo(() => getPlaylistDateRange(today), [today]);
 
-  const { data: playlistData, loading: playlistLoading } = useQuery<StationPlaylistResponse>(GET_STATION_PLAYLIST, {
+  const {
+    data: playlistData,
+    loading: playlistLoading,
+    subscribeToMore,
+  } = useQuery<StationPlaylistResponse>(GET_STATION_PLAYLIST, {
     variables: { stationId: station?.id, from, to },
     skip: !station?.id || !station?.playlistAvailable,
     pollInterval: 60000,
   });
+
+  useEffect(() => {
+    if (!station?.id || !station?.playlistAvailable || !subscribeToMore) {
+      return;
+    }
+
+    const unsubscribe = subscribeToMore<OnNewPlaylistTrackSubscriptionData>({
+      document: ON_NEW_PLAYLIST_TRACK,
+      variables: { stationId: station.id },
+      updateQuery: (prev, { subscriptionData }) => mergePlaylistTrack(prev, subscriptionData.data?.onNewPlaylistTrack),
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [station?.id, station?.playlistAvailable, subscribeToMore]);
 
   const tracks = playlistData?.getStationPlaylist?.entries ?? [];
 

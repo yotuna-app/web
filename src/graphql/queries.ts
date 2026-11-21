@@ -94,6 +94,22 @@ export const GET_STATION_PLAYLIST = gql`
   }
 `;
 
+export const ON_NEW_PLAYLIST_TRACK = gql`
+  subscription OnNewPlaylistTrack($stationId: ID!) {
+    onNewPlaylistTrack(stationId: $stationId) {
+      startedAt
+      title
+      artists
+      imageUrl
+      album
+      deezerTrackId
+      tidalTrackId
+      spotifyTrackId
+      appleTrackId
+    }
+  }
+`;
+
 export const GET_APP_CONFIG = gql`
   query GetAppConfig {
     getAppConfig {
